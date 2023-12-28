@@ -63,7 +63,8 @@ class ComponenteEditarPerfilModel
         'fp0kx1i1' /* El campo es requerido */,
       );
     }
-  // Validate Chilean RUT
+  print("Testiandoo....");
+// Validate Chilean RUT
   bool isValidRut = validateChileanRut(val);
   if (!isValidRut) {
     return 'RUT inválido'; // Error message for invalid RUT
