@@ -63,47 +63,9 @@ class ComponenteEditarPerfilModel
         'fp0kx1i1' /* El campo es requerido */,
       );
     }
-  print("Testiandoo....");
-// Validate Chilean RUT
-  bool isValidRut = validateChileanRut(val);
-  if (!isValidRut) {
-    return 'RUT inválido'; // Error message for invalid RUT
+
+    return null;
   }
-
-  return null; // No validation error
-}
-
-// Function to validate Chilean RUT
-bool validateChileanRut(String rut) {
-  if (rut.isEmpty) {
-    return false;
-  }
-
-  // Remove dots and hyphens from the entered RUT
-  rut = rut.replaceAll('.', '').replaceAll('-', '');
-
-  // Validate RUT format using a regular expression
-  RegExp rutRegExp = RegExp(r'^\d{7,8}-[kK0-9]$');
-  if (!rutRegExp.hasMatch(rut)) {
-    return false;
-  }
-
-  // Validate the check digit
-  String rutDigits = rut.substring(0, rut.length - 1);
-  String checkDigit = rut.substring(rut.length - 1).toUpperCase();
-  return calculateChileanRutCheckDigit(rutDigits) == checkDigit;
-}
-
-// Function to calculate the check digit for Chilean RUT
-String calculateChileanRutCheckDigit(String rutDigits) {
-  int rut = int.parse(rutDigits);
-  int m = 0, s = 1;
-  for (; rut != 0; rut ~/= 10) {
-    s = (s + rut % 10 * (9 - m++ % 6)) % 11;
-  }
-  return (s > 0) ? (s - 1).toString() : 'K';
-}
-    
 
   // State field(s) for emailInput widget.
   FocusNode? emailInputFocusNode;
