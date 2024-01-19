@@ -53,7 +53,7 @@ class _ComponentePerfilWidgetState extends State<ComponentePerfilWidget> {
           padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
@@ -316,7 +316,7 @@ class _ComponentePerfilWidgetState extends State<ComponentePerfilWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('paginaTargetas');
+                            context.pushNamed('paginaTarjetas');
                           },
                           child: Material(
                             color: Colors.transparent,

@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
+import '/backend/schema/enums/enums.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -16,11 +17,6 @@ class UserAccountsRecord extends FirestoreRecord {
     _initializeFields();
   }
 
-  // "fields" field.
-  DocumentReference? _fields;
-  DocumentReference? get fields => _fields;
-  bool hasFields() => _fields != null;
-
   // "recipient_document_id" field.
   String? _recipientDocumentId;
   String get recipientDocumentId => _recipientDocumentId ?? '';
@@ -30,11 +26,6 @@ class UserAccountsRecord extends FirestoreRecord {
   String? _name;
   String get name => _name ?? '';
   bool hasName() => _name != null;
-
-  // "bank" field.
-  DocumentReference? _bank;
-  DocumentReference? get bank => _bank;
-  bool hasBank() => _bank != null;
 
   // "account_number" field.
   int? _accountNumber;
@@ -51,11 +42,6 @@ class UserAccountsRecord extends FirestoreRecord {
   DocumentReference? get account => _account;
   bool hasAccount() => _account != null;
 
-  // "values" field.
-  List<String>? _values;
-  List<String> get values => _values ?? const [];
-  bool hasValues() => _values != null;
-
   // "amount" field.
   int? _amount;
   int get amount => _amount ?? 0;
@@ -71,18 +57,72 @@ class UserAccountsRecord extends FirestoreRecord {
   String get type => _type ?? '';
   bool hasType() => _type != null;
 
+  // "data" field.
+  List<InputDataStruct>? _data;
+  List<InputDataStruct> get data => _data ?? const [];
+  bool hasData() => _data != null;
+
+  // "email" field.
+  String? _email;
+  String get email => _email ?? '';
+  bool hasEmail() => _email != null;
+
+  // "type_account_id" field.
+  String? _typeAccountId;
+  String get typeAccountId => _typeAccountId ?? '';
+  bool hasTypeAccountId() => _typeAccountId != null;
+
+  // "bank_id" field.
+  String? _bankId;
+  String get bankId => _bankId ?? '';
+  bool hasBankId() => _bankId != null;
+
+  // "bank" field.
+  String? _bank;
+  String get bank => _bank ?? '';
+  bool hasBank() => _bank != null;
+
+  // "month" field.
+  String? _month;
+  String get month => _month ?? '';
+  bool hasMonth() => _month != null;
+
+  // "year" field.
+  String? _year;
+  String get year => _year ?? '';
+  bool hasYear() => _year != null;
+
+  // "comment" field.
+  String? _comment;
+  String get comment => _comment ?? '';
+  bool hasComment() => _comment != null;
+
+  // "deleted" field.
+  bool? _deleted;
+  bool get deleted => _deleted ?? false;
+  bool hasDeleted() => _deleted != null;
+
   void _initializeFields() {
-    _fields = snapshotData['fields'] as DocumentReference?;
     _recipientDocumentId = snapshotData['recipient_document_id'] as String?;
     _name = snapshotData['name'] as String?;
-    _bank = snapshotData['bank'] as DocumentReference?;
     _accountNumber = castToType<int>(snapshotData['account_number']);
     _user = snapshotData['user'] as DocumentReference?;
     _account = snapshotData['account'] as DocumentReference?;
-    _values = getDataList(snapshotData['values']);
     _amount = castToType<int>(snapshotData['amount']);
     _currency = snapshotData['currency'] as String?;
     _type = snapshotData['type'] as String?;
+    _data = getStructList(
+      snapshotData['data'],
+      InputDataStruct.fromMap,
+    );
+    _email = snapshotData['email'] as String?;
+    _typeAccountId = snapshotData['type_account_id'] as String?;
+    _bankId = snapshotData['bank_id'] as String?;
+    _bank = snapshotData['bank'] as String?;
+    _month = snapshotData['month'] as String?;
+    _year = snapshotData['year'] as String?;
+    _comment = snapshotData['comment'] as String?;
+    _deleted = snapshotData['deleted'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -120,29 +160,41 @@ class UserAccountsRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createUserAccountsRecordData({
-  DocumentReference? fields,
   String? recipientDocumentId,
   String? name,
-  DocumentReference? bank,
   int? accountNumber,
   DocumentReference? user,
   DocumentReference? account,
   int? amount,
   String? currency,
   String? type,
+  String? email,
+  String? typeAccountId,
+  String? bankId,
+  String? bank,
+  String? month,
+  String? year,
+  String? comment,
+  bool? deleted,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'fields': fields,
       'recipient_document_id': recipientDocumentId,
       'name': name,
-      'bank': bank,
       'account_number': accountNumber,
       'user': user,
       'account': account,
       'amount': amount,
       'currency': currency,
       'type': type,
+      'email': email,
+      'type_account_id': typeAccountId,
+      'bank_id': bankId,
+      'bank': bank,
+      'month': month,
+      'year': year,
+      'comment': comment,
+      'deleted': deleted,
     }.withoutNulls,
   );
 
@@ -156,32 +208,44 @@ class UserAccountsRecordDocumentEquality
   @override
   bool equals(UserAccountsRecord? e1, UserAccountsRecord? e2) {
     const listEquality = ListEquality();
-    return e1?.fields == e2?.fields &&
-        e1?.recipientDocumentId == e2?.recipientDocumentId &&
+    return e1?.recipientDocumentId == e2?.recipientDocumentId &&
         e1?.name == e2?.name &&
-        e1?.bank == e2?.bank &&
         e1?.accountNumber == e2?.accountNumber &&
         e1?.user == e2?.user &&
         e1?.account == e2?.account &&
-        listEquality.equals(e1?.values, e2?.values) &&
         e1?.amount == e2?.amount &&
         e1?.currency == e2?.currency &&
-        e1?.type == e2?.type;
+        e1?.type == e2?.type &&
+        listEquality.equals(e1?.data, e2?.data) &&
+        e1?.email == e2?.email &&
+        e1?.typeAccountId == e2?.typeAccountId &&
+        e1?.bankId == e2?.bankId &&
+        e1?.bank == e2?.bank &&
+        e1?.month == e2?.month &&
+        e1?.year == e2?.year &&
+        e1?.comment == e2?.comment &&
+        e1?.deleted == e2?.deleted;
   }
 
   @override
   int hash(UserAccountsRecord? e) => const ListEquality().hash([
-        e?.fields,
         e?.recipientDocumentId,
         e?.name,
-        e?.bank,
         e?.accountNumber,
         e?.user,
         e?.account,
-        e?.values,
         e?.amount,
         e?.currency,
-        e?.type
+        e?.type,
+        e?.data,
+        e?.email,
+        e?.typeAccountId,
+        e?.bankId,
+        e?.bank,
+        e?.month,
+        e?.year,
+        e?.comment,
+        e?.deleted
       ]);
 
   @override

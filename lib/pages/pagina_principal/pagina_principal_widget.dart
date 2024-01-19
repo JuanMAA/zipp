@@ -64,33 +64,31 @@ class _PaginaPrincipalWidgetState extends State<PaginaPrincipalWidget> {
         top: true,
         child: Row(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             wrapWithModel(
               model: _model.menuComponentModel,
               updateCallback: () => setState(() {}),
               child: MenuComponentWidget(),
             ),
-            Expanded(
-              child: Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
-                child: Container(
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: MediaQuery.sizeOf(context).height * 1.0,
-                  constraints: BoxConstraints(
-                    maxWidth: 900.0,
-                  ),
-                  decoration: BoxDecoration(),
-                  child: Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: wrapWithModel(
-                        model: _model.componenteHomeModel,
-                        updateCallback: () => setState(() {}),
-                        child: ComponenteHomeWidget(),
-                      ),
+            Align(
+              alignment: AlignmentDirectional(0.0, 0.0),
+              child: Container(
+                width: MediaQuery.sizeOf(context).width * 1.0,
+                height: MediaQuery.sizeOf(context).height * 1.0,
+                constraints: BoxConstraints(
+                  maxWidth: 600.0,
+                ),
+                decoration: BoxDecoration(),
+                child: Align(
+                  alignment: AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                    child: wrapWithModel(
+                      model: _model.componenteHomeModel,
+                      updateCallback: () => setState(() {}),
+                      child: ComponenteHomeWidget(),
                     ),
                   ),
                 ),

@@ -55,7 +55,7 @@ class _ComponenteRegistroWidgetState extends State<ComponenteRegistroWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
         child: Container(
@@ -78,7 +78,7 @@ class _ComponenteRegistroWidgetState extends State<ComponenteRegistroWidget> {
                     ),
                     Text(
                       FFLocalizations.of(context).getText(
-                        'fchumcpy' /* Bienvenido */,
+                        'fchumcpy' /* Bienvenido! */,
                       ),
                       style: FlutterFlowTheme.of(context).displaySmall.override(
                             fontFamily: 'Lexend',
@@ -97,7 +97,12 @@ class _ComponenteRegistroWidgetState extends State<ComponenteRegistroWidget> {
                                 'msqo3krk' /* Inicie sesión para acceder a s... */,
                               ),
                               textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.of(context).titleMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineSmall
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    fontWeight: FontWeight.w300,
+                                  ),
                             ),
                           ),
                         ],
@@ -149,7 +154,7 @@ class _ComponenteRegistroWidgetState extends State<ComponenteRegistroWidget> {
                           ),
                           filled: true,
                           fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
+                              FlutterFlowTheme.of(context).primaryBackground,
                           contentPadding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 24.0, 20.0, 24.0),
                           suffixIcon: InkWell(
@@ -226,7 +231,7 @@ class _ComponenteRegistroWidgetState extends State<ComponenteRegistroWidget> {
                           ),
                           filled: true,
                           fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
+                              FlutterFlowTheme.of(context).primaryBackground,
                           contentPadding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 24.0, 20.0, 24.0),
                           suffixIcon: InkWell(

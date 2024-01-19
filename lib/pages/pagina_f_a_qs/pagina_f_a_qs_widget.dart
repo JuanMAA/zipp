@@ -53,7 +53,7 @@ class _PaginaFAQsWidgetState extends State<PaginaFAQsWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       appBar: responsiveVisibility(
         context: context,
         tablet: false,
@@ -92,41 +92,28 @@ class _PaginaFAQsWidgetState extends State<PaginaFAQsWidget> {
         alignment: AlignmentDirectional(0.0, 0.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (responsiveVisibility(
-              context: context,
-              phone: false,
-            ))
-              Container(
-                width: 250.0,
-                height: MediaQuery.sizeOf(context).height * 1.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                ),
-                child: wrapWithModel(
-                  model: _model.menuComponentModel,
-                  updateCallback: () => setState(() {}),
-                  child: MenuComponentWidget(),
-                ),
+            Flexible(
+              child: wrapWithModel(
+                model: _model.menuComponentModel,
+                updateCallback: () => setState(() {}),
+                child: MenuComponentWidget(),
               ),
-            Expanded(
-              child: Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
-                child: Container(
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: MediaQuery.sizeOf(context).height * 1.0,
-                  constraints: BoxConstraints(
-                    maxWidth: 900.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).primaryBackground,
-                  ),
-                  child: wrapWithModel(
-                    model: _model.componenteFAQModel,
-                    updateCallback: () => setState(() {}),
-                    child: ComponenteFAQWidget(),
-                  ),
+            ),
+            Align(
+              alignment: AlignmentDirectional(0.0, 0.0),
+              child: Container(
+                width: MediaQuery.sizeOf(context).width * 1.0,
+                height: MediaQuery.sizeOf(context).height * 1.0,
+                constraints: BoxConstraints(
+                  maxWidth: 600.0,
+                ),
+                decoration: BoxDecoration(),
+                child: wrapWithModel(
+                  model: _model.componenteFAQModel,
+                  updateCallback: () => setState(() {}),
+                  child: ComponenteFAQWidget(),
                 ),
               ),
             ),

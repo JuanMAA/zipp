@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/componentes/componente_mensaje/componente_mensaje_widget.dart';
+import '/components/title_widget_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -79,7 +80,12 @@ class _ComponenteCategoriasWidgetState extends State<ComponenteCategoriasWidget>
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.accountsData = await queryAccountTypesRecordOnce();
+      _model.accountsData = await queryAccountTypesRecordOnce(
+        queryBuilder: (accountTypesRecord) => accountTypesRecord.where(
+          'hidden',
+          isNotEqualTo: true,
+        ),
+      );
     });
 
     _model.searchController ??= TextEditingController();
@@ -108,46 +114,24 @@ class _ComponenteCategoriasWidgetState extends State<ComponenteCategoriasWidget>
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Align(
-                alignment: AlignmentDirectional(-1.0, 0.0),
-                child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 0.0),
-                  child: Text(
-                    FFLocalizations.of(context).getText(
-                      'aiac85p0' /* Selecciona una cuenta */,
-                    ),
-                    textAlign: TextAlign.start,
-                    style: FlutterFlowTheme.of(context).bodySmall.override(
-                          fontFamily: 'Lexend',
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          fontSize: MediaQuery.sizeOf(context).width >
-                                  kBreakpointSmall
-                              ? 19.0
-                              : 14.0,
-                          fontWeight: FontWeight.w500,
-                        ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24.0, 5.0, 24.0, 0.0),
-                child: Text(
-                  FFLocalizations.of(context).getText(
-                    '4nhwqjis' /* ¿Listo para saldar cuentas? ¿C... */,
-                  ),
-                  textAlign: TextAlign.start,
-                  style: FlutterFlowTheme.of(context).bodySmall.override(
-                        fontFamily: 'Lexend',
-                        fontSize:
-                            MediaQuery.sizeOf(context).width > kBreakpointSmall
-                                ? 17.0
-                                : 14.0,
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
+                    child: wrapWithModel(
+                      model: _model.titleWidgetModel,
+                      updateCallback: () => setState(() {}),
+                      child: TitleWidgetWidget(
+                        title: 'Selecciona una cuenta',
+                        subtitle:
+                            '¿Listo para saldar cuentas? ¿Cuál eliges primero?',
                       ),
-                ),
+                    ),
+                  ),
+                ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24.0, 15.0, 24.0, 7.0),
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
                 child: Autocomplete<String>(
                   initialValue: TextEditingValue(),
                   optionsBuilder: (textEditingValue) {
@@ -312,7 +296,10 @@ class _ComponenteCategoriasWidgetState extends State<ComponenteCategoriasWidget>
                               )
                             : null,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Lexend',
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                          ),
                       cursorColor: FlutterFlowTheme.of(context).alternate,
                       validator:
                           _model.searchControllerValidator.asValidator(context),
@@ -326,7 +313,7 @@ class _ComponenteCategoriasWidgetState extends State<ComponenteCategoriasWidget>
             builder: (context) {
               if (!_model.isFull) {
                 return Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 5.0, 24.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   child: Builder(
                     builder: (context) {
                       final searchColumn = _model.simpleSearchResults.toList();
@@ -354,13 +341,20 @@ class _ComponenteCategoriasWidgetState extends State<ComponenteCategoriasWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'newAccount',
+                                'paginaCuenta',
                                 queryParameters: {
-                                  'accountTypeSelected': serializeParam(
+                                  'at': serializeParam(
                                     searchColumnItem.reference,
                                     ParamType.DocumentReference,
                                   ),
                                 }.withoutNulls,
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 0),
+                                  ),
+                                },
                               );
                             },
                             child: Container(
@@ -508,13 +502,20 @@ class _ComponenteCategoriasWidgetState extends State<ComponenteCategoriasWidget>
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             context.pushNamed(
-                              'newAccount',
+                              'paginaCuenta',
                               queryParameters: {
-                                'accountTypeSelected': serializeParam(
+                                'at': serializeParam(
                                   gridViewAccountTypesRecord.reference,
                                   ParamType.DocumentReference,
                                 ),
                               }.withoutNulls,
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType: PageTransitionType.fade,
+                                  duration: Duration(milliseconds: 0),
+                                ),
+                              },
                             );
                           },
                           child: Container(

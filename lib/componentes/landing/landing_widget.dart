@@ -1,3 +1,4 @@
+import '/components/logo_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -65,141 +66,352 @@ class _LandingWidgetState extends State<LandingWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Container(
-                              width: MediaQuery.sizeOf(context).width * 0.5,
-                              height: MediaQuery.sizeOf(context).height * 1.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    50.0, 0.0, 50.0, 0.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(-1.0, 0.0),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 15.0),
+                  if (responsiveVisibility(
+                    context: context,
+                    tablet: false,
+                    tabletLandscape: false,
+                    desktop: false,
+                  ))
+                    Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Container(
+                                width: MediaQuery.sizeOf(context).width * 1.0,
+                                height: MediaQuery.sizeOf(context).height * 1.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      50.0, 0.0, 50.0, 0.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(-1.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 15.0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              '7padbeh7' /* Acumula beneficios pagando tus... */,
+                                            ),
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontSize: 32.0,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            '7padbeh7' /* Acumula beneficios pagando tus... */,
+                                            'rec8u29r' /* Te permite pagar tus cuentas r... */,
                                           ),
-                                          textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Lexend',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                fontSize: 32.0,
-                                                fontWeight: FontWeight.w600,
+                                                        .secondaryText,
+                                                fontSize: 18.0,
                                               ),
                                         ),
                                       ),
-                                    ),
-                                    Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'rec8u29r' /* Te permite pagar tus cuentas r... */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              fontSize: 18.0,
-                                            ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 12.0, 0.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          FFButtonWidget(
-                                            onPressed: () {
-                                              print('Button pressed ...');
-                                            },
-                                            text: FFLocalizations.of(context)
-                                                .getText(
-                                              'p5d8ha1h' /* Registrate Aqui */,
-                                            ),
-                                            options: FFButtonOptions(
-                                              height: 50.0,
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color: Colors.white,
-                                                        fontSize: 18.0,
-                                                      ),
-                                              elevation: 3.0,
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1.0,
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 12.0, 0.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            FFButtonWidget(
+                                              onPressed: () {
+                                                print('Button pressed ...');
+                                              },
+                                              text: FFLocalizations.of(context)
+                                                  .getText(
+                                                'p5d8ha1h' /* Registrate Aqui */,
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
+                                              options: FFButtonOptions(
+                                                height: 50.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        24.0, 0.0, 24.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: Colors.white,
+                                                          fontSize: 18.0,
+                                                        ),
+                                                elevation: 3.0,
+                                                borderSide: BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Container(
-                              width: MediaQuery.sizeOf(context).width * 0.5,
-                              height: MediaQuery.sizeOf(context).height * 1.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.network(
-                                  'https://images.unsplash.com/photo-1599202875854-23b7cd490ff4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxMXx8Y3JlZGl0JTIwY2FyZCUyMHBheXxlbnwwfHx8fDE3MDM3MDI5OTJ8MA&ixlib=rb-4.0.3&q=80&w=1080',
-                                  width: 300.0,
-                                  height: 200.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+                  if (responsiveVisibility(
+                    context: context,
+                    phone: false,
+                  ))
+                    Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Container(
+                                width: MediaQuery.sizeOf(context).width * 0.5,
+                                height: MediaQuery.sizeOf(context).height * 1.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      valueOrDefault<double>(
+                                        () {
+                                          if (MediaQuery.sizeOf(context).width <
+                                              kBreakpointSmall) {
+                                            return 50.0;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointMedium) {
+                                            return 50.0;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointLarge) {
+                                            return 150.0;
+                                          } else {
+                                            return 50.0;
+                                          }
+                                        }(),
+                                        0.0,
+                                      ),
+                                      0.0,
+                                      valueOrDefault<double>(
+                                        () {
+                                          if (MediaQuery.sizeOf(context).width <
+                                              kBreakpointSmall) {
+                                            return 50.0;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointMedium) {
+                                            return 50.0;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointLarge) {
+                                            return 150.0;
+                                          } else {
+                                            return 50.0;
+                                          }
+                                        }(),
+                                        0.0,
+                                      ),
+                                      0.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(-1.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 24.0),
+                                          child: wrapWithModel(
+                                            model: _model.logoComponentModel1,
+                                            updateCallback: () =>
+                                                setState(() {}),
+                                            child: LogoComponentWidget(),
+                                          ),
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(-1.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 15.0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              '26nbf6ns' /* Acumula beneficios pagando tus... */,
+                                            ),
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontSize: 32.0,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            '15qihwrv' /* Te permite pagar tus cuentas r... */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                fontSize: 18.0,
+                                              ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 12.0, 0.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            FFButtonWidget(
+                                              onPressed: () async {
+                                                context.pushNamed(
+                                                  'paginaRegistro',
+                                                  extra: <String, dynamic>{
+                                                    kTransitionInfoKey:
+                                                        TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                          PageTransitionType
+                                                              .rightToLeft,
+                                                    ),
+                                                  },
+                                                );
+                                              },
+                                              text: FFLocalizations.of(context)
+                                                  .getText(
+                                                'gy8jb4za' /* Registrate Aqui */,
+                                              ),
+                                              options: FFButtonOptions(
+                                                height: 50.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        24.0, 0.0, 24.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: Colors.white,
+                                                          fontSize: 18.0,
+                                                        ),
+                                                elevation: 3.0,
+                                                borderSide: BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          if (responsiveVisibility(
+                            context: context,
+                            phone: false,
+                          ))
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Container(
+                                  width: MediaQuery.sizeOf(context).width * 0.5,
+                                  height:
+                                      MediaQuery.sizeOf(context).height * 1.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    child: Image.network(
+                                      'https://images.unsplash.com/photo-1599202875854-23b7cd490ff4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxMXx8Y3JlZGl0JTIwY2FyZCUyMHBheXxlbnwwfHx8fDE3MDM3MDI5OTJ8MA&ixlib=rb-4.0.3&q=80&w=1080',
+                                      width: 300.0,
+                                      height: 200.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                        ],
+                      ),
+                    ),
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -210,50 +422,64 @@ class _LandingWidgetState extends State<LandingWidget> {
                             alignment: AlignmentDirectional(0.0, 0.0),
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 1.0,
-                              height: 500.0,
+                              height: MediaQuery.sizeOf(context).height * 1.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
+                                    .secondaryBackground,
                               ),
                               alignment: AlignmentDirectional(0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 15.0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'wrvu9kao' /* ¿Qué ganas pagando cuentas? */,
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 24.0, 0.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 15.0),
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'wrvu9kao' /* ¿Qué ganas pagando cuentas? */,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Lexend',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    fontSize: 32.0,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
                                             ),
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  fontSize: 28.0,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                  Wrap(
+                                    spacing: 0.0,
+                                    runSpacing: 0.0,
+                                    alignment: WrapAlignment.start,
+                                    crossAxisAlignment:
+                                        WrapCrossAlignment.start,
+                                    direction: Axis.horizontal,
+                                    runAlignment: WrapAlignment.start,
+                                    verticalDirection: VerticalDirection.down,
+                                    clipBehavior: Clip.none,
                                     children: [
                                       Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -314,7 +540,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                     'Lexend',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primary,
+                                                                    .primaryText,
                                                                 fontSize: 20.0,
                                                                 fontWeight:
                                                                     FontWeight
@@ -349,7 +575,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                     'Lexend',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primary,
+                                                                    .secondaryText,
                                                                 fontSize: 17.0,
                                                                 fontWeight:
                                                                     FontWeight
@@ -422,7 +648,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                     'Lexend',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primary,
+                                                                    .primaryText,
                                                                 fontSize: 20.0,
                                                                 fontWeight:
                                                                     FontWeight
@@ -457,7 +683,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                     'Lexend',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primary,
+                                                                    .secondaryText,
                                                                 fontSize: 17.0,
                                                                 fontWeight:
                                                                     FontWeight
@@ -530,7 +756,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                     'Lexend',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primary,
+                                                                    .primaryText,
                                                                 fontSize: 20.0,
                                                                 fontWeight:
                                                                     FontWeight
@@ -542,7 +768,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(
-                                                          0.0, 0.0),
+                                                          -1.0, 0.0),
                                                   child: Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -565,7 +791,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                     'Lexend',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primary,
+                                                                    .secondaryText,
                                                                 fontSize: 17.0,
                                                                 fontWeight:
                                                                     FontWeight
@@ -585,7 +811,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                     alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 15.0, 0.0, 15.0),
+                                          0.0, 24.0, 0.0, 24.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
                                           '5h6boi0g' /* Cobramos una comisión de hasta... */,
@@ -597,8 +823,8 @@ class _LandingWidgetState extends State<LandingWidget> {
                                               fontFamily: 'Lexend',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              fontSize: 20.0,
+                                                      .primaryText,
+                                              fontSize: 15.0,
                                               fontWeight: FontWeight.w600,
                                             ),
                                       ),
@@ -617,9 +843,9 @@ class _LandingWidgetState extends State<LandingWidget> {
                     children: [
                       Container(
                         width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: 200.0,
+                        height: MediaQuery.sizeOf(context).height * 0.4,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primary,
+                          color: FlutterFlowTheme.of(context).tertiary,
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -628,12 +854,21 @@ class _LandingWidgetState extends State<LandingWidget> {
                             Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
+                                Align(
+                                  alignment: AlignmentDirectional(-1.0, 0.0),
+                                  child: wrapWithModel(
+                                    model: _model.logoComponentModel2,
+                                    updateCallback: () => setState(() {}),
+                                    child: LogoComponentWidget(),
+                                  ),
+                                ),
                                 Align(
                                   alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 15.0),
+                                        0.0, 0.0, 0.0, 10.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
                                         'ass7sy2b' /* Da el primer paso hoy para ges... */,
@@ -645,7 +880,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondary,
-                                            fontSize: 25.0,
+                                            fontSize: 15.0,
                                             fontWeight: FontWeight.w600,
                                           ),
                                     ),
@@ -662,7 +897,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                             BorderRadius.circular(8.0),
                                         child: SvgPicture.asset(
                                           'assets/images/im_playstore.svg',
-                                          width: 214.0,
+                                          width: 150.0,
                                           fit: BoxFit.fitWidth,
                                         ),
                                       ),
@@ -675,7 +910,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                             BorderRadius.circular(8.0),
                                         child: SvgPicture.asset(
                                           'assets/images/im_appstore_(1).svg',
-                                          width: 214.0,
+                                          width: 150.0,
                                           fit: BoxFit.fitWidth,
                                         ),
                                       ),
@@ -688,6 +923,10 @@ class _LandingWidgetState extends State<LandingWidget> {
                         ),
                       ),
                     ],
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [],
                   ),
                 ],
               ),

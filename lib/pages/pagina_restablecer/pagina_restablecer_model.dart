@@ -2,6 +2,7 @@ import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/components/logo_component_widget.dart';
 import '/components/menu_component_widget.dart';
+import '/components/title_widget_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -19,6 +20,8 @@ class PaginaRestablecerModel extends FlutterFlowModel<PaginaRestablecerWidget> {
   final formKey2 = GlobalKey<FormState>();
   // Model for menuComponent component.
   late MenuComponentModel menuComponentModel;
+  // Model for titleWidget component.
+  late TitleWidgetModel titleWidgetModel;
   // State field(s) for emailAddressLogged widget.
   FocusNode? emailAddressLoggedFocusNode;
   TextEditingController? emailAddressLoggedController;
@@ -65,6 +68,7 @@ class PaginaRestablecerModel extends FlutterFlowModel<PaginaRestablecerWidget> {
 
   void initState(BuildContext context) {
     menuComponentModel = createModel(context, () => MenuComponentModel());
+    titleWidgetModel = createModel(context, () => TitleWidgetModel());
     emailAddressLoggedControllerValidator =
         _emailAddressLoggedControllerValidator;
     logoComponentModel = createModel(context, () => LogoComponentModel());
@@ -73,6 +77,7 @@ class PaginaRestablecerModel extends FlutterFlowModel<PaginaRestablecerWidget> {
 
   void dispose() {
     menuComponentModel.dispose();
+    titleWidgetModel.dispose();
     emailAddressLoggedFocusNode?.dispose();
     emailAddressLoggedController?.dispose();
 

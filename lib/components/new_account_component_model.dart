@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/componentes/componente_mensaje/componente_mensaje_widget.dart';
+import '/components/title_widget_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -21,6 +22,8 @@ class NewAccountComponentModel
     extends FlutterFlowModel<NewAccountComponentWidget> {
   ///  State fields for stateful widgets in this component.
 
+  // Model for titleWidget component.
+  late TitleWidgetModel titleWidgetModel;
   // State field(s) for search widget.
   final searchKey = GlobalKey();
   FocusNode? searchFocusNode;
@@ -30,9 +33,12 @@ class NewAccountComponentModel
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    titleWidgetModel = createModel(context, () => TitleWidgetModel());
+  }
 
   void dispose() {
+    titleWidgetModel.dispose();
     searchFocusNode?.dispose();
   }
 

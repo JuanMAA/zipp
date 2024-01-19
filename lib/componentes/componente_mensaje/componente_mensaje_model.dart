@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'componente_mensaje_widget.dart' show ComponenteMensajeWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

@@ -1,3 +1,4 @@
+import '/components/logo_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -6,7 +7,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'componente_tutorial_model.dart';
@@ -59,20 +59,11 @@ class _ComponenteTutorialWidgetState extends State<ComponenteTutorialWidget> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              if (Theme.of(context).brightness == Brightness.dark)
-                Image.asset(
-                  'assets/images/logo-svg-zippy_copia.png',
-                  width: 170.0,
-                  height: 60.0,
-                  fit: BoxFit.fitWidth,
-                ),
-              if (!(Theme.of(context).brightness == Brightness.dark))
-                SvgPicture.asset(
-                  'assets/images/logo-svg-zippy.svg',
-                  width: 170.0,
-                  height: 60.0,
-                  fit: BoxFit.fitWidth,
-                ),
+              wrapWithModel(
+                model: _model.logoComponentModel,
+                updateCallback: () => setState(() {}),
+                child: LogoComponentWidget(),
+              ),
             ],
           ),
         ),
@@ -131,7 +122,7 @@ class _ComponenteTutorialWidgetState extends State<ComponenteTutorialWidget> {
                                                 fontFamily: 'Lexend',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
+                                                        .primaryText,
                                               ),
                                         ),
                                       ),
@@ -151,7 +142,13 @@ class _ComponenteTutorialWidgetState extends State<ComponenteTutorialWidget> {
                                           ),
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
-                                              .bodySmall,
+                                              .bodySmall
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                              ),
                                         ),
                                       ),
                                     ],
@@ -202,7 +199,7 @@ class _ComponenteTutorialWidgetState extends State<ComponenteTutorialWidget> {
                                                 fontFamily: 'Lexend',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
+                                                        .primaryText,
                                               ),
                                         ),
                                       ),
@@ -273,7 +270,7 @@ class _ComponenteTutorialWidgetState extends State<ComponenteTutorialWidget> {
                                                 fontFamily: 'Lexend',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
+                                                        .primaryText,
                                               ),
                                         ),
                                       ),

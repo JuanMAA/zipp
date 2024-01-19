@@ -4,14 +4,15 @@ import '/components/logo_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'componente_login_widget.dart' show ComponenteLoginWidget;
-import 'package:easy_debounce/easy_debounce.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 
 class ComponenteLoginModel extends FlutterFlowModel<ComponenteLoginWidget> {
@@ -56,35 +57,6 @@ class ComponenteLoginModel extends FlutterFlowModel<ComponenteLoginWidget> {
     return null;
   }
 
-  // State field(s) for segundoNombre widget.
-  FocusNode? segundoNombreFocusNode;
-  TextEditingController? segundoNombreController;
-  String? Function(BuildContext, String?)? segundoNombreControllerValidator;
-  String? _segundoNombreControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'jspunpnk' /* El campo es requerido */,
-      );
-    }
-
-    return null;
-  }
-
-  // State field(s) for documentId widget.
-  FocusNode? documentIdFocusNode;
-  TextEditingController? documentIdController;
-  final documentIdMask = MaskTextInputFormatter(mask: '##.###.###-A');
-  String? Function(BuildContext, String?)? documentIdControllerValidator;
-  String? _documentIdControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'e57zu8jm' /* El campo es requerido */,
-      );
-    }
-
-    return null;
-  }
-
   // State field(s) for password-Create widget.
   FocusNode? passwordCreateFocusNode;
   TextEditingController? passwordCreateController;
@@ -117,8 +89,37 @@ class ComponenteLoginModel extends FlutterFlowModel<ComponenteLoginWidget> {
     return null;
   }
 
-  // State field(s) for CheckboxListTile widget.
-  bool? checkboxListTileValue;
+  // State field(s) for telefono widget.
+  FocusNode? telefonoFocusNode;
+  TextEditingController? telefonoController;
+  String? Function(BuildContext, String?)? telefonoControllerValidator;
+  String? _telefonoControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'jspunpnk' /* El campo es requerido */,
+      );
+    }
+
+    if (val.length < 9) {
+      return FFLocalizations.of(context).getText(
+        '419tlen5' /* La longitud mínima es de 9. */,
+      );
+    }
+
+    if (!RegExp('^9\\d{8}\$').hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        '8xhxzomn' /* Número telefónico inválido. */,
+      );
+    }
+    return null;
+  }
+
+  // State field(s) for CheckboxTyC widget.
+  bool? checkboxTyCValue;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  int? valPhone;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  int? valEmail;
 
   /// Initialization and disposal methods.
 
@@ -126,12 +127,11 @@ class ComponenteLoginModel extends FlutterFlowModel<ComponenteLoginWidget> {
     logoComponentModel = createModel(context, () => LogoComponentModel());
     emailAddressControllerValidator = _emailAddressControllerValidator;
     primerNombreControllerValidator = _primerNombreControllerValidator;
-    segundoNombreControllerValidator = _segundoNombreControllerValidator;
-    documentIdControllerValidator = _documentIdControllerValidator;
     passwordCreateVisibility = false;
     passwordCreateControllerValidator = _passwordCreateControllerValidator;
     passwordConfirmVisibility = false;
     passwordConfirmControllerValidator = _passwordConfirmControllerValidator;
+    telefonoControllerValidator = _telefonoControllerValidator;
   }
 
   void dispose() {
@@ -142,17 +142,14 @@ class ComponenteLoginModel extends FlutterFlowModel<ComponenteLoginWidget> {
     primerNombreFocusNode?.dispose();
     primerNombreController?.dispose();
 
-    segundoNombreFocusNode?.dispose();
-    segundoNombreController?.dispose();
-
-    documentIdFocusNode?.dispose();
-    documentIdController?.dispose();
-
     passwordCreateFocusNode?.dispose();
     passwordCreateController?.dispose();
 
     passwordConfirmFocusNode?.dispose();
     passwordConfirmController?.dispose();
+
+    telefonoFocusNode?.dispose();
+    telefonoController?.dispose();
   }
 
   /// Action blocks are added here.

@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
+import '/backend/schema/enums/enums.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -41,10 +42,45 @@ class TransactionsRecord extends FirestoreRecord {
   String get description => _description ?? '';
   bool hasDescription() => _description != null;
 
-  // "amount" field.
-  String? _amount;
-  String get amount => _amount ?? '';
-  bool hasAmount() => _amount != null;
+  // "recipient_account_type" field.
+  String? _recipientAccountType;
+  String get recipientAccountType => _recipientAccountType ?? '';
+  bool hasRecipientAccountType() => _recipientAccountType != null;
+
+  // "recipient_account_number" field.
+  String? _recipientAccountNumber;
+  String get recipientAccountNumber => _recipientAccountNumber ?? '';
+  bool hasRecipientAccountNumber() => _recipientAccountNumber != null;
+
+  // "recipient_bank_id" field.
+  String? _recipientBankId;
+  String get recipientBankId => _recipientBankId ?? '';
+  bool hasRecipientBankId() => _recipientBankId != null;
+
+  // "total_amount" field.
+  String? _totalAmount;
+  String get totalAmount => _totalAmount ?? '';
+  bool hasTotalAmount() => _totalAmount != null;
+
+  // "total_commission" field.
+  String? _totalCommission;
+  String get totalCommission => _totalCommission ?? '';
+  bool hasTotalCommission() => _totalCommission != null;
+
+  // "percent_commission" field.
+  String? _percentCommission;
+  String get percentCommission => _percentCommission ?? '';
+  bool hasPercentCommission() => _percentCommission != null;
+
+  // "base_amount" field.
+  String? _baseAmount;
+  String get baseAmount => _baseAmount ?? '';
+  bool hasBaseAmount() => _baseAmount != null;
+
+  // "commission" field.
+  String? _commission;
+  String get commission => _commission ?? '';
+  bool hasCommission() => _commission != null;
 
   void _initializeFields() {
     _user = snapshotData['user'] as DocumentReference?;
@@ -52,7 +88,15 @@ class TransactionsRecord extends FirestoreRecord {
     _updateDate = snapshotData['update_date'] as DateTime?;
     _createDate = snapshotData['create_date'] as DateTime?;
     _description = snapshotData['description'] as String?;
-    _amount = snapshotData['amount'] as String?;
+    _recipientAccountType = snapshotData['recipient_account_type'] as String?;
+    _recipientAccountNumber =
+        snapshotData['recipient_account_number'] as String?;
+    _recipientBankId = snapshotData['recipient_bank_id'] as String?;
+    _totalAmount = snapshotData['total_amount'] as String?;
+    _totalCommission = snapshotData['total_commission'] as String?;
+    _percentCommission = snapshotData['percent_commission'] as String?;
+    _baseAmount = snapshotData['base_amount'] as String?;
+    _commission = snapshotData['commission'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -95,7 +139,14 @@ Map<String, dynamic> createTransactionsRecordData({
   DateTime? updateDate,
   DateTime? createDate,
   String? description,
-  String? amount,
+  String? recipientAccountType,
+  String? recipientAccountNumber,
+  String? recipientBankId,
+  String? totalAmount,
+  String? totalCommission,
+  String? percentCommission,
+  String? baseAmount,
+  String? commission,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -104,7 +155,14 @@ Map<String, dynamic> createTransactionsRecordData({
       'update_date': updateDate,
       'create_date': createDate,
       'description': description,
-      'amount': amount,
+      'recipient_account_type': recipientAccountType,
+      'recipient_account_number': recipientAccountNumber,
+      'recipient_bank_id': recipientBankId,
+      'total_amount': totalAmount,
+      'total_commission': totalCommission,
+      'percent_commission': percentCommission,
+      'base_amount': baseAmount,
+      'commission': commission,
     }.withoutNulls,
   );
 
@@ -122,7 +180,14 @@ class TransactionsRecordDocumentEquality
         e1?.updateDate == e2?.updateDate &&
         e1?.createDate == e2?.createDate &&
         e1?.description == e2?.description &&
-        e1?.amount == e2?.amount;
+        e1?.recipientAccountType == e2?.recipientAccountType &&
+        e1?.recipientAccountNumber == e2?.recipientAccountNumber &&
+        e1?.recipientBankId == e2?.recipientBankId &&
+        e1?.totalAmount == e2?.totalAmount &&
+        e1?.totalCommission == e2?.totalCommission &&
+        e1?.percentCommission == e2?.percentCommission &&
+        e1?.baseAmount == e2?.baseAmount &&
+        e1?.commission == e2?.commission;
   }
 
   @override
@@ -132,7 +197,14 @@ class TransactionsRecordDocumentEquality
         e?.updateDate,
         e?.createDate,
         e?.description,
-        e?.amount
+        e?.recipientAccountType,
+        e?.recipientAccountNumber,
+        e?.recipientBankId,
+        e?.totalAmount,
+        e?.totalCommission,
+        e?.percentCommission,
+        e?.baseAmount,
+        e?.commission
       ]);
 
   @override

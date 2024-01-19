@@ -1,20 +1,20 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
+import '/components/step_widget.dart';
+import '/components/title_widget_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'componente_destinatario_widget.dart' show ComponenteDestinatarioWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -24,20 +24,12 @@ class ComponenteDestinatarioModel
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();
-  // State field(s) for rutRecipient widget.
-  FocusNode? rutRecipientFocusNode;
-  TextEditingController? rutRecipientController;
-  String? Function(BuildContext, String?)? rutRecipientControllerValidator;
-  String? _rutRecipientControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        '8b064d7v' /* El campo es requerido */,
-      );
-    }
-
-    return null;
-  }
-
+  // Stores action output result for [Backend Call - API (GET BANKS)] action in componenteDestinatario widget.
+  ApiCallResponse? getBanksAndAccounts;
+  // Model for titleWidget component.
+  late TitleWidgetModel titleWidgetModel;
+  // Model for step component.
+  late StepModel stepModel;
   // State field(s) for nameRecipient widget.
   FocusNode? nameRecipientFocusNode;
   TextEditingController? nameRecipientController;
@@ -49,33 +41,11 @@ class ComponenteDestinatarioModel
       );
     }
 
+    if (val.length < 5) {
+      return 'Requires at least 5 characters.';
+    }
     if (val.length > 30) {
       return 'Maximum 30 characters allowed, currently ${val.length}.';
-    }
-
-    return null;
-  }
-
-  // State field(s) for bankRecipient widget.
-  String? bankRecipientValue;
-  FormFieldController<String>? bankRecipientValueController;
-  // State field(s) for typeAccountRecipient widget.
-  FormFieldController<String>? typeAccountRecipientValueController;
-  // State field(s) for numberAcountRecipient widget.
-  FocusNode? numberAcountRecipientFocusNode;
-  TextEditingController? numberAcountRecipientController;
-  String? Function(BuildContext, String?)?
-      numberAcountRecipientControllerValidator;
-  String? _numberAcountRecipientControllerValidator(
-      BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'd4y09a5n' /* El campo es requerido */,
-      );
-    }
-
-    if (val.length > 40) {
-      return 'Maximum 40 characters allowed, currently ${val.length}.';
     }
 
     return null;
@@ -105,38 +75,61 @@ class ComponenteDestinatarioModel
     return null;
   }
 
+  // State field(s) for numberAcountRecipient widget.
+  FocusNode? numberAcountRecipientFocusNode;
+  TextEditingController? numberAcountRecipientController;
+  String? Function(BuildContext, String?)?
+      numberAcountRecipientControllerValidator;
+  String? _numberAcountRecipientControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'd4y09a5n' /* El campo es requerido */,
+      );
+    }
+
+    if (val.length > 40) {
+      return 'Maximum 40 characters allowed, currently ${val.length}.';
+    }
+
+    return null;
+  }
+
+  // State field(s) for bank widget.
+  String? bankValue;
+  FormFieldController<String>? bankValueController;
+  // State field(s) for account widget.
+  String? accountValue;
+  FormFieldController<String>? accountValueController;
   // Stores action output result for [Backend Call - Create Document] action in Button-Login widget.
   UserAccountsRecord? userAccountCreated;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    rutRecipientControllerValidator = _rutRecipientControllerValidator;
+    titleWidgetModel = createModel(context, () => TitleWidgetModel());
+    stepModel = createModel(context, () => StepModel());
     nameRecipientControllerValidator = _nameRecipientControllerValidator;
-    numberAcountRecipientControllerValidator =
-        _numberAcountRecipientControllerValidator;
     emailAddressRecipientControllerValidator =
         _emailAddressRecipientControllerValidator;
+    numberAcountRecipientControllerValidator =
+        _numberAcountRecipientControllerValidator;
   }
 
   void dispose() {
-    rutRecipientFocusNode?.dispose();
-    rutRecipientController?.dispose();
-
+    titleWidgetModel.dispose();
+    stepModel.dispose();
     nameRecipientFocusNode?.dispose();
     nameRecipientController?.dispose();
 
-    numberAcountRecipientFocusNode?.dispose();
-    numberAcountRecipientController?.dispose();
-
     emailAddressRecipientFocusNode?.dispose();
     emailAddressRecipientController?.dispose();
+
+    numberAcountRecipientFocusNode?.dispose();
+    numberAcountRecipientController?.dispose();
   }
 
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
-
-  String? get typeAccountRecipientValue =>
-      typeAccountRecipientValueController?.value;
 }

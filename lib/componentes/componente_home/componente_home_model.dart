@@ -1,10 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/componentes/componente_mensaje/componente_mensaje_widget.dart';
+import '/components/title_widget_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'componente_home_widget.dart' show ComponenteHomeWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -21,6 +22,8 @@ class ComponenteHomeModel extends FlutterFlowModel<ComponenteHomeWidget> {
 
   ///  State fields for stateful widgets in this component.
 
+  // Model for titleWidget component.
+  late TitleWidgetModel titleWidgetModel;
   // State field(s) for Checkbox widget.
 
   Map<UserAccountsRecord, bool> checkboxValueMap = {};
@@ -29,9 +32,13 @@ class ComponenteHomeModel extends FlutterFlowModel<ComponenteHomeWidget> {
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    titleWidgetModel = createModel(context, () => TitleWidgetModel());
+  }
 
-  void dispose() {}
+  void dispose() {
+    titleWidgetModel.dispose();
+  }
 
   /// Action blocks are added here.
 

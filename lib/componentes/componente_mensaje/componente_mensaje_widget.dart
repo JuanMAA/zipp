@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -67,8 +68,8 @@ class _ComponenteMensajeWidgetState extends State<ComponenteMensajeWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
                 child: Icon(
                   Icons.error_outline,
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: 200.0,
+                  color: FlutterFlowTheme.of(context).secondaryText,
+                  size: 150.0,
                 ),
               ),
               Padding(
@@ -78,9 +79,40 @@ class _ComponenteMensajeWidgetState extends State<ComponenteMensajeWidget> {
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).titleMedium.override(
                         fontFamily: 'Lexend',
-                        color: FlutterFlowTheme.of(context).primaryText,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        fontSize: 20.0,
                         fontWeight: FontWeight.w500,
                       ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    context.pushNamed('paginaPrincipal');
+                  },
+                  text: FFLocalizations.of(context).getText(
+                    'nadwxsxv' /* Volver al inicio */,
+                  ),
+                  options: FFButtonOptions(
+                    height: 40.0,
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).primary,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Lexend',
+                          color: Colors.white,
+                          fontSize: 18.0,
+                        ),
+                    elevation: 3.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
                 ),
               ),
             ],

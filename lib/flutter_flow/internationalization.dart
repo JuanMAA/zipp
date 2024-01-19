@@ -108,58 +108,51 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // paginaHome
   {
     '2bb3vct7': {
-      'es': 'Home',
-      'en': 'home',
+      'es': 'Principal',
+      'en': 'Home',
     },
   },
   // paginaRegistro
   {
     'momge5oj': {
-      'es': 'Home',
-      'en': 'home',
+      'es': 'Principal',
+      'en': 'Home',
     },
   },
   // paginaTutorial
   {
     'oo0kk9qe': {
-      'es': 'Home',
-      'en': 'home',
+      'es': 'Principal',
+      'en': 'Home',
     },
   },
   // paginaPrincipal
   {
     'ofz2zvlc': {
-      'es': 'Home',
-      'en': 'home',
-    },
-  },
-  // paginaMiPerfil
-  {
-    '8srr2k0j': {
-      'es': 'Perfil',
-      'en': 'Profile',
+      'es': 'Principal',
+      'en': 'Home',
     },
   },
   // paginaDetallePago
   {
     '6g6obt3a': {
       'es': 'Detalle de Pago',
-      'en': 'Payment detail',
+      'en': 'Payment Detail',
     },
     'imaejg7x': {
       'es': 'Home',
-      'en': 'home',
+      'en': 'Home',
     },
   },
   // paginaEditarPerfil
   {
     '4rzqov3y': {
       'es': 'Editar Perfil',
-      'en': 'Edit profile',
+      'en': 'Edit Profile',
     },
     '59naq8ur': {
       'es': 'Home',
-      'en': 'home',
+      'en': 'Home',
     },
   },
   // paginaRestablecer
@@ -168,11 +161,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Cambiar contraseña',
       'en': 'Change Password',
     },
-    'hithegan': {
+    'qvb0h4ds': {
+      'es': 'Restablecer contraseña',
+      'en': 'Reset Password',
+    },
+    '8wc8e0tc': {
       'es':
           'Ingresa el correo electrónico asociado a tu cuenta y te enviaremos un enlace para restablecer tu contraseña.',
       'en':
-          'Enter the email associated with your account and we\'ll send you a link to reset your password.',
+          'Enter the email associated with your account, and we\'ll send you a link to reset your password.',
     },
     'pm63wdro': {
       'es': 'Email',
@@ -238,7 +235,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'hwn4nwmk': {
       'es': 'o',
-      'en': 'either',
+      'en': 'or',
     },
     '1z3qg4ig': {
       'es': '¿Si no tiienes una cuenta?',
@@ -250,7 +247,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '5tvk9lv0': {
       'es': 'Home',
-      'en': 'home',
+      'en': 'Home',
     },
   },
   // PaginaNotificationes
@@ -301,7 +298,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'oks4x95o': {
       'es': 'Home',
-      'en': 'home',
+      'en': 'Home',
     },
   },
   // paginaAgregarCuenta
@@ -315,44 +312,44 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Add',
     },
   },
-  // paginaTargetas
+  // paginaTarjetas
   {
     'jsbctd7o': {
       'es': 'Mis Targetas',
-      'en': 'My Targets',
+      'en': 'My Cards',
     },
     'h421y5mi': {
       'es': 'Targetas',
-      'en': 'Targets',
+      'en': 'Cards',
     },
   },
-  // paginaCuenta
+  // paginaDetallesCuenta
   {
     'xru8vjsa': {
-      'es': 'Agregar',
+      'es': 'Agregar Detalle',
       'en': 'Add',
     },
     '6qawx1fi': {
       'es': 'Home',
-      'en': 'home',
+      'en': 'Home',
     },
   },
-  // newAccount
+  // paginaCuenta
   {
     '4yxxienz': {
-      'es': 'Seleccionar una cuenta',
+      'es': 'Seleccionar cuenta',
       'en': 'Select an account',
     },
     'y09r2w55': {
       'es': 'Home',
-      'en': 'home',
+      'en': 'Home',
     },
   },
   // paginaDestinatario
   {
     '2xxyt28g': {
-      'es': 'Datos Bancarios Destinatario',
-      'en': 'Datos Bancarios Destinatario',
+      'es': 'Datos Destinatario',
+      'en': 'Datos Destinatario',
     },
     '62ap97mr': {
       'es': 'Home',
@@ -367,7 +364,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '1ivxf568': {
       'es': 'Historial',
-      'en': 'Record',
+      'en': 'History',
     },
   },
   // paginaEditarCuenta
@@ -376,21 +373,29 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Administrar cuenta',
       'en': 'Manage account',
     },
-    '02skes9q': {
-      'es': 'Administrar cuenta',
-      'en': 'Manage account',
-    },
     'dctoqbzn': {
       'es': 'Datos de cuenta',
       'en': 'Account data',
     },
+    'tvessxj6': {
+      'es': 'Click para modificar los datos',
+      'en': 'Click to modify the data',
+    },
     'p1x5yr2b': {
       'es': 'Datos del destinatario',
-      'en': 'Adressee details',
+      'en': 'Recipient\'s information',
+    },
+    'b8sb0at0': {
+      'es': 'Click para modificar los datos',
+      'en': 'Modificar Datos',
     },
     'kya14gel': {
       'es': 'Datos de pago',
       'en': 'Payment details',
+    },
+    '4bhqib0v': {
+      'es': 'Click para modificar los datos',
+      'en': 'Click to modify the data',
     },
     '1ljs46rf': {
       'es': 'Recordatorio',
@@ -410,46 +415,30 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'c3y5zfwn': {
       'es': 'Eliminar Cuenta',
-      'en': 'Delete account',
+      'en': 'Delete Account',
     },
     'qvyl6015': {
       'es': 'Home',
-      'en': 'home',
+      'en': 'Home',
     },
   },
   // Profile13Responsive
   {
-    'lymc7hfd': {
-      'es': '2,200',
-      'en': '',
-    },
-    'vnz8p6g5': {
-      'es': 'Orders Placed',
-      'en': '',
-    },
-    'jd5uzdqd': {
-      'es': '\$212.4k',
-      'en': '',
-    },
-    '2ypg7k7e': {
-      'es': 'Money Earned',
-      'en': '',
-    },
     'tw1titgt': {
       'es': 'Mi Cuenta',
       'en': 'My Account Information',
     },
     'l55qv5tb': {
       'es': 'Cambiar Contraseña',
-      'en': 'Cambiar Contraseña',
+      'en': 'Change Password',
     },
     'vtojknmm': {
       'es': 'Editar Perfil',
-      'en': 'Editar Perfil',
+      'en': 'Edit Profile',
     },
     'o5r54vmi': {
       'es': 'Soporte',
-      'en': 'Soporte',
+      'en': 'Support',
     },
     'iqo1bss1': {
       'es': 'Tutorial',
@@ -457,27 +446,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'nvieu112': {
       'es': 'Politica de Privacidad',
-      'en': 'Politica de Privacidad',
+      'en': 'Privacy Policy',
     },
     'yezqhj9c': {
       'es': 'Mis Transacciones',
-      'en': 'Mis Transacciones',
+      'en': 'My Transactions',
     },
     'aqmpntv7': {
       'es': 'Mis Tarjetas',
-      'en': 'Mis Tarjetas',
+      'en': 'My Cards',
     },
     'nox5s6io': {
       'es': 'Configuración de Notificaciones',
-      'en': 'Configuración de Notificaciones',
+      'en': 'Notification Settings',
     },
     'l61gwa6h': {
       'es': 'Reportar Error',
-      'en': '',
+      'en': 'Report Error',
     },
     'pzhxp55d': {
       'es': 'Light ',
-      'en': '',
+      'en': 'Light ',
     },
     'iucbhm9z': {
       'es': 'Dark',
@@ -487,9 +476,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Log Out',
       'en': '',
     },
-    '9fd5j0la': {
-      'es': 'My Profile',
-      'en': '',
+    'nye4udah': {
+      'es': 'Agregar Detalle',
+      'en': 'Add',
     },
     'cgkw1sh0': {
       'es': '__',
@@ -509,6 +498,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'Te permite pagar tus cuentas recurrentes con tarjeta, incluso las que normalmente transfieres. Gana tiempo, liquidez y flexibilidad mientras ordenas tus cuentas.',
     },
     'p5d8ha1h': {
+      'es': 'Registrate Aqui',
+      'en': 'Registrate Aqui',
+    },
+    '26nbf6ns': {
+      'es': 'Acumula beneficios pagando tus cuentas con tarjeta',
+      'en': 'Acumula beneficios pagando tus cuentas con tarjeta',
+    },
+    '15qihwrv': {
+      'es':
+          'Te permite pagar tus cuentas recurrentes con tarjeta, incluso las que normalmente transfieres. Gana tiempo, liquidez y flexibilidad mientras ordenas tus cuentas.',
+      'en':
+          'Te permite pagar tus cuentas recurrentes con tarjeta, incluso las que normalmente transfieres. Gana tiempo, liquidez y flexibilidad mientras ordenas tus cuentas.',
+    },
+    'gy8jb4za': {
       'es': 'Registrate Aqui',
       'en': 'Registrate Aqui',
     },
@@ -547,8 +550,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'Programa los pagos de tus cuentas y ocupa tu tiempo en lo que realmente te importa.',
     },
     '5h6boi0g': {
-      'es':
-          'Cobramos una comisión de hasta 1,39% por transacción (IVA incluido)',
+      'es': 'Cobramos una comisión de hasta 1,39% por transacción.',
       'en':
           'Cobramos una comisión de hasta 1,39% por transacción (IVA incluido)',
     },
@@ -567,157 +569,129 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'aupinwxn': {
       'es': 'Menu',
-      'en': '',
+      'en': 'Menu',
     },
     'onkb20hq': {
       'es': 'Inicio',
-      'en': 'Inicio',
+      'en': 'Home',
     },
     'h7e4aopk': {
       'es': 'Historial',
-      'en': 'Historial',
+      'en': 'History',
     },
     '3vw3b6nk': {
       'es': 'Metodo de Pago',
-      'en': 'Metodo de Pago',
+      'en': 'Payment Method',
     },
     '1zfuxl35': {
       'es': 'Agregar Cuenta',
-      'en': 'Agregar Cuenta',
+      'en': 'Add Account',
     },
     '23xorg9b': {
       'es': 'Tu Cuenta',
-      'en': '',
+      'en': 'Your Account',
     },
     'ak8ojqn7': {
       'es': 'Ajustes',
-      'en': 'Agregar Cuenta',
+      'en': 'Settings',
     },
     'm1i4n6da': {
       'es': 'Cerrar Sesión',
-      'en': 'Cerrar Sesión',
+      'en': 'Log Out',
     },
   },
   // newAccountComponent
   {
-    '20fd5baa': {
-      'es': '¿Listo para saldar cuentas? ¿Cuál eliges primero?',
-      'en': '¿Listo para saldar cuentas? ¿Cuál eliges primero?',
-    },
     '0vflie9s': {
       'es': '¿Qué cuenta quieres pagar?',
-      'en': '¿Qué cuenta quieres pagar?',
+      'en': 'Which account do you want to pay?',
     },
     'pylya0zb': {
-      'es': 'Ingresa aquí el tipo de cuenta, o nombre de la empresa',
-      'en': 'Ingresa aquí el tipo de cuenta, o nombre de la empresa',
+      'es': 'Ingresa aquí el tipo de cuenta o nombre de la empresa.',
+      'en': 'Which account do you want to pay?',
     },
     'xj16hy8y': {
       'es': 'Option 1',
-      'en': '',
+      'en': 'Option 1',
     },
   },
   // componenteLogin
   {
     'bywopltk': {
       'es': 'Para Comenzar',
-      'en': 'Para Comenzar',
+      'en': 'To start',
     },
     'wwryhvil': {
       'es': 'Crea tu cuenta a continuación',
-      'en': 'Crea tu cuenta a continuación',
+      'en': 'Create your account below',
     },
     '5nfkjdb7': {
       'es': 'Email ',
-      'en': 'Email ',
+      'en': 'E-mail',
     },
     'lyqyfhl7': {
       'es': 'Ingresa tu email',
-      'en': 'Ingresa tu email',
+      'en': 'Enter your email',
     },
     'rxhxitqt': {
-      'es': 'Nombres',
-      'en': 'Primer nombre',
+      'es': 'Nombre y apellido',
+      'en': 'Name and surname',
     },
     'layn4cui': {
-      'es': 'Ingresar nombres',
-      'en': 'Ingresa tu primer nombre',
-    },
-    'kszu8ttq': {
-      'es': 'Apellidos',
-      'en': 'Segundo nombre',
-    },
-    '20gocco9': {
-      'es': 'Ingresar apellidos',
-      'en': 'Ingresa tu segundo nombre',
-    },
-    'm616i0s4': {
-      'es': 'RUT',
-      'en': 'RUT',
-    },
-    't4stvknv': {
-      'es': 'Ingresa tu RUT',
-      'en': 'Ingresa tu RUT',
+      'es': 'Ingresar nombre y apellido',
+      'en': 'Enter first and last name',
     },
     'lwcb0tqi': {
       'es': 'Contraseña',
-      'en': 'Contraseña',
+      'en': 'Password',
     },
     'iqfccz4q': {
       'es': 'Ingresa tu contraseña',
-      'en': 'Ingresa tu contraseña',
+      'en': 'Enter your password',
     },
     'fd63p9br': {
       'es': 'Confirmar contraseña',
-      'en': 'Confirmar contraseña',
+      'en': 'Confirm Password',
     },
     'hl67vl5a': {
       'es': 'Ingresa nuevamente tu contraseña',
-      'en': 'Ingresa nuevamente tu contraseña',
+      'en': 'Enter your password again',
+    },
+    'kszu8ttq': {
+      'es': 'Número de teléfono',
+      'en': 'Phone number',
+    },
+    '20gocco9': {
+      'es': 'Número de teléfono',
+      'en': 'Phone number',
     },
     'advjq46u': {
       'es': 'He leído y acepto los términos y condiciones de uso',
-      'en': 'He leído y acepto los términos y condiciones de uso',
+      'en': 'I have read and accept the terms and conditions of use',
     },
     '0xmb18gs': {
       'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
+      'en': 'The field is required',
     },
     'yyn7jb5j': {
       'es': 'Introduzca una dirección de correo electrónico válida',
-      'en': 'Introduzca una dirección de correo electrónico válida',
+      'en': 'Enter a valid email address',
     },
     'frzpcsq1': {
       'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
+      'en': 'Please choose an option from the drop down menu',
     },
     'bush02dk': {
       'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
+      'en': 'The field is required',
     },
     'oe5x88ug': {
       'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
-    },
-    'jspunpnk': {
-      'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
-    },
-    'w5odysg0': {
-      'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
-    },
-    'e57zu8jm': {
-      'es': 'El campo es requerido',
-      'en': '',
-    },
-    '20sqi0dg': {
-      'es': 'Please choose an option from the dropdown',
-      'en': '',
+      'en': 'Please choose an option from the drop down menu',
     },
     'pow36zki': {
       'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
+      'en': 'The field is required',
     },
     'ughsh6e1': {
       'es': '',
@@ -725,31 +699,47 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '0zabdl74': {
       'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
+      'en': 'Please choose an option from the drop down menu',
     },
     'hpm0epix': {
       'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
+      'en': 'The field is required',
     },
     'rqvwcrly': {
       'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
+      'en': 'Please choose an option from the drop down menu',
+    },
+    'jspunpnk': {
+      'es': 'El campo es requerido',
+      'en': 'The field is required',
+    },
+    '419tlen5': {
+      'es': 'La longitud mínima es de 9.',
+      'en': 'The minimum length is 9.',
+    },
+    '8xhxzomn': {
+      'es': 'Número telefónico inválido.',
+      'en': 'Invalid phone number.',
+    },
+    'w5odysg0': {
+      'es': 'Por favor elija una opción del menú desplegable',
+      'en': 'Please choose an option from the drop down menu',
     },
     'fvdravf7': {
       'es': 'Crear Cuenta',
-      'en': 'Crear cuenta',
+      'en': 'Create Account',
     },
     'qnwsy7ky': {
       'es': 'Registrarse con Google',
-      'en': 'Registrarse con Google',
+      'en': 'Sign up with Google',
     },
     'm7vlx2xw': {
       'es': '¿Ya tienes una cuenta?',
-      'en': '¿Ya tienes una cuenta?',
+      'en': 'Do you already have an account?',
     },
     'dgx07x2s': {
       'es': 'Iniciar sesión',
-      'en': 'Iniciar sesión',
+      'en': 'Log in',
     },
   },
   // componenteTutorial
@@ -786,259 +776,243 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'a8kfn3cc': {
       'es': 'Comenzar',
-      'en': 'Comenzar',
+      'en': 'Begin',
     },
   },
   // componenteRegistro
   {
     'fchumcpy': {
-      'es': 'Bienvenido',
-      'en': 'Bienvenido!',
+      'es': 'Bienvenido!',
+      'en': 'Welcome!',
     },
     'msqo3krk': {
       'es': 'Inicie sesión para acceder a su cuenta a continuación.',
-      'en': 'Inicie sesión para acceder a su cuenta a continuación.',
+      'en': 'Sign in to access your account below.',
     },
     'qurwj3og': {
       'es': 'Email',
-      'en': 'Email',
+      'en': 'E-mail',
     },
     'vplzr91x': {
       'es': 'Ingresa tu email',
-      'en': 'Ingresa tu email',
+      'en': 'Enter your email',
     },
     'czch8pij': {
       'es': 'Contraseña',
-      'en': 'Contraseña',
+      'en': 'Password',
     },
     '7vmeqab8': {
       'es': 'Ingresa tu contraseña',
-      'en': 'Ingresa tu contraseña',
+      'en': 'Enter your password',
     },
     'kpyiyug7': {
       'es': 'Iniciar Sesíon',
-      'en': 'Iniciar Sesíon',
+      'en': 'Log in',
     },
     'dmdfj3gc': {
       'es': 'Iniciar Sesíon con Google',
-      'en': 'Iniciar Sesíon con Google',
+      'en': 'Sign in with Google',
     },
     '0jpjmen0': {
       'es': 'No tiienes una cuenta?',
-      'en': 'No tiienes una cuenta?',
+      'en': 'Don\'t have an account?',
     },
     '9sc5jqdj': {
       'es': 'Crear cuenta',
-      'en': 'Crear cuenta',
+      'en': 'Create Account',
     },
     'x2nwouwb': {
       'es': 'o',
-      'en': 'o',
+      'en': 'either',
     },
     '5vmgblrs': {
       'es': '¿Olvido su contraseña?',
-      'en': '¿Olvido su contraseña?',
+      'en': 'Forgot your password?',
     },
     'bu9xx7ji': {
       'es': 'Restablecer',
-      'en': 'Restablecer',
+      'en': 'Restore',
     },
     'deifasn4': {
       'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
+      'en': 'The field is required',
     },
     '97re45i0': {
       'es': 'Introduzca una dirección de correo electrónico válida',
-      'en': 'Introduzca una dirección de correo electrónico válida',
+      'en': 'Enter a valid email address',
     },
     'fpvi8im4': {
       'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
+      'en': 'Please choose an option from the drop down menu',
     },
     'kx4bjlep': {
       'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
+      'en': 'The field is required',
     },
     'lnoir7h0': {
       'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
+      'en': 'Please choose an option from the drop down menu',
     },
   },
   // componenteHome
   {
-    'wj893q2l': {
-      'es': 'Cuentas que transfiero',
-      'en': 'Cuentas que transfiero',
-    },
     '3t5kqktc': {
       'es': 'Cuentas',
-      'en': 'Cuentas',
+      'en': 'Accounts',
     },
     'pzv21uer': {
       'es': 'Servicios',
-      'en': 'Servicios',
+      'en': 'Services',
+    },
+    'f9qogllw': {
+      'es': '(próximamente)',
+      'en': '(soon)',
     },
     'elqi8fel': {
       'es': 'Programados',
-      'en': 'Programados',
+      'en': 'Scheduled',
     },
     '29f4pxsa': {
       'es': '(próximamente)',
-      'en': '(próximamente)',
+      'en': '(soon)',
     },
     'pvnxug6q': {
       'es': 'Pagar',
-      'en': 'Pagar',
+      'en': 'Pay',
     },
     '4bhdvzga': {
       'es': 'Seleccionar todo',
-      'en': 'Seleccionar todo',
-    },
-    'l7wuzxzo': {
-      'es': 'Due Sep 1, 2021',
-      'en': '',
+      'en': 'Select all',
     },
     'yu8ew77j': {
       'es': 'Ver Mas',
-      'en': 'Ver Mas',
+      'en': 'See more',
     },
     '9friwsm3': {
       'es': 'Pagar',
-      'en': 'Pagar',
+      'en': 'Pay',
     },
   },
   // componenteDestinatario
   {
-    '4ndkun6a': {
-      'es': '¿Cuáles son los datos bancarios del destinatario?',
-      'en': '¿Cuáles son los datos bancarios del destinatario?',
-    },
-    's789fo0f': {
-      'es': 'RUT Destinatario',
-      'en': 'RUT Destinatario',
-    },
-    'ljboi5nr': {
-      'es': 'Ej: 9.999.999-9',
-      'en': 'Ej: 9.999.999-9',
-    },
     'og89hzvy': {
-      'es': 'Nombre',
-      'en': 'Nombre',
+      'es': 'Nombre del destinatario.',
+      'en': 'Recipient\'s name.',
     },
     'euxg5eno': {
-      'es': 'Ej: Juan Mansilla',
-      'en': 'Ej: Juan Mansilla',
+      'es': 'Ej: Gabriel',
+      'en': 'Ex: Gabriel',
     },
-    '8kbk6jpj': {
-      'es': 'Seleccione un banco',
-      'en': 'Seleccione un banco',
+    'a9qm1ujr': {
+      'es': 'Email destinatario',
+      'en': 'Recipient email',
     },
-    'm8p6l8pr': {
-      'es': 'Buscar un banco',
-      'en': 'Buscar un banco',
-    },
-    'bjv6b07y': {
-      'es': 'Cuenta Corriente',
-      'en': 'Cuenta Corriente',
-    },
-    '04n6ol8m': {
-      'es': 'Cuenta Corriente',
-      'en': 'Cuenta Corriente',
-    },
-    'dl3g2jjn': {
-      'es': 'Cuenta Vista',
-      'en': 'Cuenta Vista',
+    'hmjea2s1': {
+      'es': 'Ej: gabriel@zipp.com',
+      'en': 'Ex: gabriel@zipp.com',
     },
     '641uypkf': {
-      'es': 'Número de Cuenta',
-      'en': 'Número de Cuenta',
+      'es': 'Número de cuenta',
+      'en': 'Account number',
     },
     'igwfl4vy': {
       'es': 'Ej: 099999999',
-      'en': 'Ej: 099999999',
+      'en': 'Ex: 099999999',
     },
-    'a9qm1ujr': {
-      'es': 'Email',
-      'en': 'Email',
+    '8kbk6jpj': {
+      'es': 'Seleccione un banco',
+      'en': 'Select a bank',
     },
-    'hmjea2s1': {
-      'es': 'Ej: juan@zippypay.com',
-      'en': 'Ej: juan@zippypay.com',
+    'm8p6l8pr': {
+      'es': 'Seleccione el banco del destinatario.',
+      'en': 'Select the recipient\'s bank.',
     },
-    '8b064d7v': {
-      'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
+    'exsu7wl8': {
+      'es': 'Cuenta Corriente',
+      'en': 'Current account',
     },
-    'fwqdp0qr': {
-      'es': 'Rut invalido',
-      'en': 'Rut invalido',
+    'wsg0f4u6': {
+      'es': 'Cuenta Vista',
+      'en': 'Vista Account',
     },
-    '4sbmkfo6': {
-      'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
+    'pc5ozlpr': {
+      'es': 'CuentaRUT',
+      'en': 'Rut account',
+    },
+    'a2b6qcvf': {
+      'es': 'Cuenta Ahorro',
+      'en': 'Savings Account',
+    },
+    'g79fetbt': {
+      'es': 'Seleccione tipo de cuenta.',
+      'en': 'Select account type.',
+    },
+    'zo4zzwof': {
+      'es': 'Buscar un banco',
+      'en': 'Find a bank',
     },
     '7qswbt5f': {
       'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
+      'en': 'The field is required',
+    },
+    'lrtx2jln': {
+      'es': '',
+      'en': '',
     },
     'd0d715xz': {
       'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
-    },
-    'd4y09a5n': {
-      'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
-    },
-    'rwphdgj6': {
-      'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
+      'en': 'Please choose an option from the drop down menu',
     },
     'ef5d6svt': {
       'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
+      'en': 'The field is required',
     },
     'ab2afnki': {
       'es': 'Introduzca una dirección de correo electrónico válida',
-      'en': 'Introduzca una dirección de correo electrónico válida',
+      'en': 'Enter a valid email address',
     },
     '3mzyz1v0': {
       'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
+      'en': 'Please choose an option from the drop down menu',
     },
-    'e3y6o7dr': {
-      'es': 'Continuar',
-      'en': 'Continuar',
+    'd4y09a5n': {
+      'es': 'El campo es requerido',
+      'en': 'The field is required',
+    },
+    'rwphdgj6': {
+      'es': 'Por favor elija una opción del menú desplegable',
+      'en': 'Please choose an option from the drop down menu',
     },
   },
   // componentePerfil
   {
     'xrwhwkon': {
       'es': 'Configuraciones',
-      'en': 'Configuraciones',
+      'en': 'Settings',
     },
     'lbb7jr5z': {
       'es': '¿Listo para saldar cuentas? ¿Cuál eliges primero?',
-      'en': '¿Listo para saldar cuentas? ¿Cuál eliges primero?',
+      'en': 'Ready to settle accounts? Which one do you choose first?',
     },
     'm77vcu28': {
       'es': 'Editar Perfil',
-      'en': 'Editar Perfil',
+      'en': 'Edit profile',
     },
     '16rcxlq0': {
       'es': 'Cambiar Contraseña',
-      'en': 'Cambiar Contraseña',
+      'en': 'Change Password',
     },
     'i6lxbjlm': {
       'es': 'Mis Tarjetas',
-      'en': 'Mis Tarjetas',
+      'en': 'My Cards',
     },
     'wm89hdgq': {
       'es': 'Mis Transacciones',
-      'en': 'Mis Transacciones',
+      'en': 'My Transactions',
     },
     'ml9tkqd3': {
       'es': 'Configuración de notificaciones',
-      'en': 'Configuración de notificaciones',
+      'en': 'Notification settings',
     },
     'h7rz8hh7': {
       'es': 'Tutorial',
@@ -1046,27 +1020,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'q1auewo2': {
       'es': 'Política de privacidad',
-      'en': 'Política de privacidad',
+      'en': 'Privacy Policy',
     },
     'cumbx0gj': {
       'es': 'Modo Oscuro',
-      'en': 'Modo Oscuro',
+      'en': 'Dark Mode',
     },
     '2rcpvfwc': {
       'es': 'Modo Normal',
-      'en': 'Modo Normal',
+      'en': 'Normal Mode',
     },
   },
   // componentePago
   {
-    'sobj1s3z': {
-      'es': 'Detalles del pago y destinatario',
-      'en': 'Detalles del pago y destinatario',
-    },
-    'gaj4tsyd': {
-      'es': 'Selecciona una cuenta',
-      'en': 'Selecciona una cuenta',
-    },
     '53cqt3ce': {
       'es': 'CLP',
       'en': 'CLP',
@@ -1075,21 +1041,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'CLP',
       'en': 'CLP',
     },
-    'illc8mw9': {
-      'es': 'UF',
-      'en': 'UF',
-    },
     'e3cqmr5k': {
       'es': 'Tipo de Moneda',
-      'en': 'Tipo de Moneda',
+      'en': 'Type of currency',
     },
     '8hybnvxf': {
       'es': 'Monto a pagar',
-      'en': 'Monto a pagar',
+      'en': 'Amount payable',
     },
     'vumkk8b8': {
-      'es': 'Ej: 200000',
-      'en': 'Ej: 200000',
+      'es': 'Ej: 2000',
+      'en': 'Ex: 2000',
+    },
+    'd225n78u': {
+      'es': '0',
+      'en': '0',
     },
     '7sbgkwr8': {
       'es': '',
@@ -1097,55 +1063,55 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '8uhs48l9': {
       'es': 'Enero',
-      'en': 'Enero',
+      'en': 'January',
     },
     '0le40g9z': {
       'es': 'Febrero',
-      'en': 'Febrero',
+      'en': 'February',
     },
     '6alr0y4m': {
       'es': 'Marzo',
-      'en': 'Marzo',
+      'en': 'March',
     },
     'miypsi7z': {
       'es': 'Abril',
-      'en': 'Abril',
+      'en': 'April',
     },
     'l11ctk13': {
       'es': 'Mayo',
-      'en': 'Mayo',
+      'en': 'May',
     },
     '7d1ftgqe': {
       'es': 'Junio',
-      'en': 'Junio',
+      'en': 'June',
     },
     'mxvhujau': {
       'es': 'Julio',
-      'en': 'Julio',
+      'en': 'July',
     },
     'yrq32gl1': {
       'es': 'Agosto',
-      'en': 'Agosto',
+      'en': 'August',
     },
     'yiu4ml2v': {
       'es': 'Septiembre',
-      'en': 'Septiembre',
+      'en': 'September',
     },
     '5a9mgyac': {
       'es': 'Octubre',
-      'en': 'Octubre',
+      'en': 'October',
     },
     'qpwis29s': {
       'es': 'Noviembre',
-      'en': 'Noviembre',
+      'en': 'November',
     },
     '3herpr7b': {
       'es': 'Diciembre',
-      'en': 'Diciembre',
+      'en': 'December',
     },
     'b1c5uqv0': {
       'es': 'Buscar Mes',
-      'en': 'Buscar Mes',
+      'en': 'Search Month',
     },
     '8jedhw5d': {
       'es': '2023',
@@ -1165,332 +1131,284 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'eibuflb9': {
       'es': 'Seleccionar Año',
-      'en': 'Seleccionar Año',
+      'en': 'Select Year',
     },
     'ap5epi6t': {
       'es': 'Buscar Año',
-      'en': 'Buscar Año',
+      'en': 'Search Year',
     },
     'eaennovt': {
       'es': 'Agregar un comentario',
-      'en': 'Agregar un comentario',
+      'en': 'Add a comment',
     },
     '8p1gdbh4': {
       'es': 'Ejemplo: residencia de mayores - Septiembre 2023',
-      'en': 'Ejemplo: residencia de mayores - Septiembre 2023',
+      'en': 'Example: nursing home - September 2023',
     },
     '4sjf00xh': {
       'es': 'Avisar al destinatario ',
-      'en': 'Avisar al destinatario ',
+      'en': 'Notify recipient',
     },
     'rbth2l35': {
-      'es': 'Cuando el pago esté en proceso',
-      'en': 'Cuando el pago esté en proceso',
+      'es': '(próximamente)',
+      'en': '(soon)',
     },
-    'lo9cshdc': {
-      'es': 'Pagar',
-      'en': 'Pagar',
+    'rbc0m47v': {
+      'es': 'Resumen',
+      'en': 'Summary',
+    },
+    '9ztt0lxb': {
+      'es': 'Total',
+      'en': 'Total',
     },
     'c523py1d': {
       'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
+      'en': 'The field is required',
+    },
+    'f5bucgya': {
+      'es': 'Debe ingresar mínimo 3 caracteres.',
+      'en': 'You must enter at least 3 characters.',
     },
     'k1vh2f5b': {
       'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
+      'en': 'Please choose an option from the drop down menu',
     },
     'mwkxbsil': {
       'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
+      'en': 'The field is required',
     },
     'f646ebt4': {
       'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
+      'en': 'Please choose an option from the drop down menu',
     },
-  },
-  // dynamicComponent
-  {
-    '0slcaof7': {
-      'es': 'Rellena el siguiente formulario con los datos requeridos ',
-      'en': 'Rellena el siguiente formulario con los datos requeridos',
+    'z5kt11wz': {
+      'es': 'Selecciona una cuenta',
+      'en': 'Select an account',
     },
-    'dpevv92w': {
-      'es': '',
-      'en': '',
+    'i5p4ok0g': {
+      'es': 'Pagar Cuenta',
+      'en': 'Pay',
     },
-    '73pjqr4l': {
-      'es': 'Actualizar Datos',
-      'en': 'Actualizar Datos',
+    'q5y8e4di': {
+      'es': 'Agregar Targeta',
+      'en': 'Add Target',
     },
-    '6qq92jht': {
-      'es': '',
-      'en': '',
-    },
-    'rzpwbjvg': {
-      'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
-    },
-    'sm443upz': {
-      'es': 'Debe ingresar al menos 4 caracteres',
-      'en': 'Debe ingresar al menos 4 caracteres',
-    },
-    'ju8j39wo': {
-      'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
+    'tsb75546': {
+      'es': 'Actualizar Cuenta',
+      'en': 'Add Target',
     },
   },
   // componenteFAQ
   {
     'z0z5667w': {
       'es': 'Cómo utilizamos tus datos ',
-      'en': 'Cómo utilizamos tus datos ',
+      'en': 'How we use your data',
     },
     'ag5xf5xs': {
       'es':
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Accumsan sit amet nulla facilisi morbi tempus. Non consectetur a erat nam. Donec ultrices tincidunt arcu non sodales. Velit sed ullamcorper morbi tincidunt. Molestie a iaculis at erat pellentesque adipiscing. Mauris nunc congue nisi vitae. Nisl tincidunt eget nullam non nisi. Faucibus nisl tincidunt eget nullam non nisi est. Leo duis ut diam quam nulla.\n\nEuismod lacinia at quis risus sed vulputate odio. Velit dignissim sodales ut eu sem integer vitae justo eget. Risus feugiat in ante metus. Leo vel orci porta non pulvinar neque laoreet suspendisse interdum. Suscipit tellus mauris a diam maecenas sed enim ut sem. Sem integer vitae justo eget magna fermentum iaculis eu. Lacinia at quis risus sed. Faucibus purus in massa tempor. Leo a diam sollicitudin tempor id eu. Nisi scelerisque eu ultrices vitae auctor. Vulputate dignissim suspendisse in est ante in. Enim neque volutpat ac tincidunt vitae semper quis. Ipsum dolor sit amet consectetur adipiscing elit.\n\nEt malesuada fames ac turpis egestas maecenas pharetra convallis. Sed sed risus pretium quam vulputate. Elit pellentesque habitant morbi tristique senectus et. Viverra maecenas accumsan lacus vel facilisis volutpat est. Sit amet mattis vulputate enim nulla. Nisi lacus sed viverra tellus in hac habitasse. Sit amet risus nullam eget felis eget nunc lobortis. Pretium lectus quam id leo in vitae. Adipiscing diam donec adipiscing tristique. Commodo sed egestas egestas fringilla. Ipsum dolor sit amet consectetur adipiscing. Ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Montes nascetur ridiculus mus mauris. Ut etiam sit amet nisl purus in. Arcu ac tortor dignissim convallis aenean et tortor at. Ornare suspendisse sed nisi lacus sed viverra.',
       'en':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Accumsan sit amet nulla facilisi morbi tempus. Non consectetur a erat nam. Donec ultrices tincidunt arcu non sodales. Velit sed ullamcorper morbi tincidunt. Molestie a iaculis at erat pellentesque adipiscing. Mauris nunc congue nisi vitae. Nisl tincidunt eget nullam non nisi. Faucibus nisl tincidunt eget nullam non nisi est. Leo duis ut diam quam nulla.\n\nEuismod lacinia at quis risus sed vulputate odio. Velit dignissim sodales ut eu sem integer vitae justo eget. Risus feugiat in ante metus. Leo vel orci porta non pulvinar neque laoreet suspendisse interdum. Suscipit tellus mauris a diam maecenas sed enim ut sem. Sem integer vitae justo eget magna fermentum iaculis eu. Lacinia at quis risus sed. Faucibus purus in massa tempor. Leo a diam sollicitudin tempor id eu. Nisi scelerisque eu ultrices vitae auctor. Vulputate dignissim suspendisse in est ante in. Enim neque volutpat ac tincidunt vitae semper quis. Ipsum dolor sit amet consectetur adipiscing elit.\n\nEt malesuada fames ac turpis egestas maecenas pharetra convallis. Sed sed risus pretium quam vulputate. Elit pellentesque habitant morbi tristique senectus et. Viverra maecenas accumsan lacus vel facilisis volutpat est. Sit amet mattis vulputate enim nulla. Nisi lacus sed viverra tellus in hac habitasse. Sit amet risus nullam eget felis eget nunc lobortis. Pretium lectus quam id leo in vitae. Adipiscing diam donec adipiscing tristique. Commodo sed egestas egestas fringilla. Ipsum dolor sit amet consectetur adipiscing. Ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Montes nascetur ridiculus mus mauris. Ut etiam sit amet nisl purus in. Arcu ac tortor dignissim convallis aenean et tortor at. Ornare suspendisse sed nisi lacus sed viverra.',
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Accumsan sit amet nulla facilisi morbi tempus. Non consectetur a erat nam. Donec ultrices tincidunt arcu non sodales. Velit sed ullamcorper morbi tincidunt. Molestie a iaculis at erat pellentesque adipiscing. Mauris never congue nisi vitae. Nisl tincidunt eget nullam non nisi. Faucibus nisl tincidunt eget nullam non nisi est. Leo duis ut diam quam nulla.\n\nEuismod lacinia at quis risus sed vulputate hatred. Velit dignissim sodales ut eu sem integer vitae just eget. Risus feugiat in ante metus. Leo vel orci porta non pulvinar neque laoreet suspendisse interdum. Suscipit tellus mauris a diam maecenas sed enim ut sem. Sem integer vitae just eget magna fermentum iaculis eu. Lacinia at quis risus sed. Faucibus purus in massa tempor. Leo a diam sollicitudin tempor id eu. Nisi scelerisque eu ultrices vitae auctor. Vulputate dignissim suspendisse in es ante in. Enim neque volutpat ac tincidunt vitae semper quis. Ipsum dolor sit amet consectetur adipiscing elit.\n\nEt malesuada fames ac turpis egestas maecenas pharetra convallis. Sed sed risus pretium quam vulputate. Elit pellentesque habitant morbi tristique senectus et. Viverra maecenas accumsan lacus vel facilisis volutpat est. Sit amet mattis vulputate enim nulla. Nisi lacus sed viverra tellus in hachabitasse. Sit amet risus nullam eget felis eget nunc lobortis. Pretium lectus quam id leo in vitae. Adipiscing diam donec adipiscing tristique. Commodo thirst egestas egestas fringilla. Ipsum dolor sit amet consectetur adipiscing. Ipsum dolor sit amet consectetur adipiscing elit pellentesque inhabitant morbi. Montes nascetur ridiculus mus mauris. Ut etiam sit amet nisl purus in. Arcu ac tortor dignissim convallis aenean et tortor at. Ornare suspendisse sed nisi lacus sed viverra.',
     },
   },
   // componenteEditarPerfil
   {
-    '3rlb9mcf': {
-      'es': 'Administra tus datos personales.',
-      'en': 'Administra tus datos personales.',
-    },
     '55ncaw18': {
-      'es': 'Primer Nombre',
-      'en': 'Primer Nombre',
+      'es': 'Nombre completo',
+      'en': 'Full name',
     },
     'm4xj14ly': {
-      'es': 'Primer Nombre',
-      'en': 'Primer Nombre',
-    },
-    'hy7fknxu': {
-      'es': 'Segundo Nombre',
-      'en': 'Segundo Nombre',
-    },
-    'h4thihkr': {
-      'es': 'Segundo Nombre',
-      'en': 'Segundo Nombre',
-    },
-    'o7ccwtqf': {
-      'es': 'RUT',
-      'en': 'RUT',
-    },
-    'hrlsflwt': {
-      'es': 'RUT',
-      'en': 'RUT',
+      'es': 'Nombre completo',
+      'en': 'Full name',
     },
     '4de3rn2q': {
-      'es': 'Email',
-      'en': 'Email',
+      'es': ' Número telefónico (Sin +56)',
+      'en': 'Phone number',
     },
     'elk1qgvh': {
+      'es': ' Número telefónico (Sin +56)',
+      'en': 'Phone number',
+    },
+    'w3jy9ad7': {
       'es': 'Email',
-      'en': 'Email',
+      'en': 'E-mail',
+    },
+    '3royi0re': {
+      'es': 'Email',
+      'en': 'E-mail',
     },
     'fwotfu86': {
       'es': 'Actualizar Datos',
-      'en': 'Actualizar Datos',
-    },
-    '3nf27gv7': {
-      'es': 'Otras acciones',
-      'en': 'Otras acciones',
+      'en': 'Update data',
     },
     'iycgzwq5': {
-      'es': 'Eliminar',
-      'en': 'Eliminar Cuenta',
+      'es': 'Eliminar Cuenta',
+      'en': 'Delete account',
     },
     '9em3rfaw': {
-      'es': 'Validar',
-      'en': 'Validar Cuenta',
+      'es': 'Verificar cuenta.',
+      'en': 'Verify account.',
     },
     '28j7behd': {
       'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
+      'en': 'The field is required',
     },
     'veq5wox4': {
       'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
-    },
-    'd6x72ss8': {
-      'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
-    },
-    'vtasq5d9': {
-      'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
-    },
-    'fp0kx1i1': {
-      'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
-    },
-    '97z1bqb1': {
-      'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
+      'en': 'Please choose an option from the drop down menu',
     },
     'kt3b0rff': {
       'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
+      'en': 'The field is required',
+    },
+    'r3yux9q8': {
+      'es': 'La longitud mínima es de 9.',
+      'en': 'The minimum length is 9.',
     },
     '22u7tbnl': {
-      'es': 'Introduzca una dirección de correo electrónico válida',
-      'en': 'Introduzca una dirección de correo electrónico válida',
+      'es': 'Número telefónico inválido.',
+      'en': 'Invalid phone number.',
     },
     'es1vu7km': {
       'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
+      'en': 'Please choose an option from the drop down menu',
+    },
+    'e9fbb89n': {
+      'es': 'Field is required',
+      'en': 'Field is required',
+    },
+    'yli8hy17': {
+      'es': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
     },
   },
   // componenteBilletera
   {
-    'r4sm8y4x': {
-      'es': 'Mis targetas',
-      'en': 'Mis targetas',
+    't0zumebl': {
+      'es': 'Mis tarjetas',
+      'en': 'My cards',
     },
-    '2dve2x0c': {
-      'es':
-          'Personaliza tu cartera de tarjetas: elimina, agrega y destaca tu favorita.',
-      'en':
-          'Personaliza tu cartera de tarjetas: elimina, agrega y destaca tu favorita.',
+    'ygb6mxkg': {
+      'es': 'Personaliza tu cartera de tarjetas.',
+      'en': 'Customize your cardholder.',
+    },
+    '9wb8eezn': {
+      'es': 'Añadir',
+      'en': 'Add',
+    },
+    'wqd07p46': {
+      'es': 'No registra tarjetas :(',
+      'en': 'Does not register cards :(',
     },
   },
   // componenteCategorias
   {
-    'aiac85p0': {
-      'es': 'Selecciona una cuenta',
-      'en': 'Selecciona una cuenta',
-    },
-    '4nhwqjis': {
-      'es': '¿Listo para saldar cuentas? ¿Cuál eliges primero?',
-      'en': '¿Listo para saldar cuentas? ¿Cuál eliges primero?',
-    },
     'l9uiwndn': {
       'es': '¿Qué cuenta quieres pagar?',
-      'en': '¿Qué cuenta quieres pagar?',
+      'en': 'What account do you want to pay?',
     },
     'ob7ynz4c': {
       'es': 'Ingresa aquí el tipo de cuenta, o nombre de la empresa',
-      'en': 'Ingresa aquí el tipo de cuenta, o nombre de la empresa',
+      'en': 'Enter the type of account or company name here',
+    },
+  },
+  // componenteMensaje
+  {
+    'nadwxsxv': {
+      'es': 'Volver al inicio',
+      'en': 'Back to top',
     },
   },
   // componenteTransacciones
   {
-    'py7hn4du': {
-      'es': 'Mi historial',
-      'en': 'Mi historial',
-    },
-    '09xeljiv': {
-      'es':
-          'Aquí tienes un informe detallado que enumera todas las transacciones que has realizado.',
-      'en':
-          'Aquí tienes un informe detallado que enumera todas las transacciones que has realizado.',
-    },
     'a4sryklp': {
       'es': 'Buscar',
-      'en': 'Buscar',
+      'en': 'Look for',
     },
     'xau0qvk2': {
       'es': 'Buscar',
-      'en': 'Buscar',
+      'en': 'Look for',
     },
     '5xmd6ill': {
-      'es': 'Tipo de cuenta',
-      'en': 'Tipo de cuenta',
+      'es': 'Estado',
+      'en': 'State',
     },
     'tcejc193': {
-      'es': 'Detalle del pago',
-      'en': 'Detalle del pago',
+      'es': 'Cuenta Detinatario',
+      'en': 'Recipient Account',
     },
     'j6ic6ufr': {
       'es': 'Monto',
-      'en': 'Monto',
+      'en': 'Amount',
     },
     'sfjddiv3': {
-      'es': 'Fecha de depósito',
-      'en': 'Fecha de depósito',
+      'es': 'Fecha de pago',
+      'en': 'Payment date',
     },
-    'ifpyrhls': {
-      'es': 'Estado',
-      'en': 'Estado',
-    },
-    'b3ix1j9u': {
+    '7y58kixd': {
       'es': 'Acciones',
-      'en': 'Acciones',
+      'en': 'Actions',
     },
-    '4qqtkfty': {
+    'f1x2pcp6': {
       'es': 'Ver Mas',
-      'en': 'Ver Mas',
+      'en': 'See more',
     },
     '5owwokk0': {
-      'es': 'Tipo de cuenta',
-      'en': 'Tipo de cuenta',
+      'es': 'Estado',
+      'en': 'Account type',
     },
     '6kj7l3zf': {
-      'es': 'Detalle del pago',
-      'en': 'Detalle del pago',
+      'es': 'Cuenta Detinatario',
+      'en': 'Payment details',
     },
-    'w10x0s0s': {
+    '720glych': {
       'es': 'Monto',
-      'en': 'Monto',
-    },
-    'p2urmu5j': {
-      'es': 'Fecha de depósito',
-      'en': 'Fecha de depósito',
-    },
-    'xzmrxnoh': {
-      'es': 'Estado',
-      'en': 'Estado',
-    },
-    'ygwitj5o': {
-      'es': 'Acciones',
-      'en': 'Acciones',
-    },
-    '98gu4oz1': {
-      'es': 'Ver Mas',
-      'en': 'Ver Mas',
-    },
-  },
-  // inputComponent
-  {
-    'yhhlg8fv': {
-      'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
-    },
-    '4e0i84fe': {
-      'es': '',
       'en': '',
     },
-    'txhsirrm': {
-      'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
+    'w1wfu7c6': {
+      'es': 'Fecha de Pago',
+      'en': '',
     },
-    'vmb0axs8': {
-      'es': 'El campo es requerido',
-      'en': 'El campo es requerido',
+    'mmylgf7n': {
+      'es': 'Acciones',
+      'en': '',
     },
-    'mxkhnjq2': {
-      'es': 'Por favor elija una opción del menú desplegable',
-      'en': 'Por favor elija una opción del menú desplegable',
+    'bodtwi88': {
+      'es': 'Ver Mas',
+      'en': 'See more',
     },
   },
   // logoComponent
   {
     'a69o47vd': {
       'es': 'ZIPP',
-      'en': 'Apagalo',
+      'en': 'ZIPP',
     },
   },
   // menuComponent
   {
     'kmfk6i71': {
-      'es': 'Light Mode',
-      'en': '',
+      'es': 'Light',
+      'en': 'Light Mode',
     },
     'nafxvvc1': {
-      'es': 'Dark Mode',
-      'en': '',
+      'es': 'Dark',
+      'en': 'Dark Mode',
+    },
+  },
+  // step
+  {
+    'x3zbcqfi': {
+      'es': 'Detalle',
+      'en': 'Detail',
+    },
+    'fsbwa1yr': {
+      'es': 'Destinatario',
+      'en': 'Recipient',
+    },
+    'zk2cg0yr': {
+      'es': 'Pago',
+      'en': 'Pay',
     },
   },
   // Miscellaneous
@@ -1508,12 +1426,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'efvtwj7k': {
-      'es': '',
-      'en': '',
+      'es': 'Error en la autenticación, reintente nuevamente.',
+      'en': 'Authentication error, please try again.',
     },
     'ec5hfa1e': {
-      'es': '',
-      'en': '',
+      'es': 'El enlace para resetear su contraseña ha sido enviado.',
+      'en': 'The link to reset your password has been sent.',
     },
     'q5ljwvfo': {
       'es': '',
@@ -1544,8 +1462,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'w50xnxo0': {
-      'es': '',
-      'en': '',
+      'es': 'El email ya se encuentra registrado por otra cuenta.',
+      'en': 'The email is already registered with another account.',
     },
     'aox3s4fb': {
       'es': '',

@@ -54,7 +54,7 @@ class _LogoComponentWidgetState extends State<LogoComponentWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Align(
-                alignment: AlignmentDirectional(-1.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                   child: Text(
@@ -67,7 +67,7 @@ class _LogoComponentWidgetState extends State<LogoComponentWidget> {
                           color:
                               !(Theme.of(context).brightness == Brightness.dark)
                                   ? FlutterFlowTheme.of(context).primary
-                                  : FlutterFlowTheme.of(context).secondary,
+                                  : Colors.white,
                           fontSize: 50.0,
                           fontWeight: FontWeight.w800,
                         ),

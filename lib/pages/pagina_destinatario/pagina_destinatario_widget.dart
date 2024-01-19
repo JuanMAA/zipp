@@ -1,10 +1,13 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/componentes/componente_destinatario/componente_destinatario_widget.dart';
-import '/componentes/componente_menu/componente_menu_widget.dart';
+import '/components/menu_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,10 +18,12 @@ export 'pagina_destinatario_model.dart';
 class PaginaDestinatarioWidget extends StatefulWidget {
   const PaginaDestinatarioWidget({
     Key? key,
-    required this.accoutParam,
+    this.ac,
+    this.ua,
   }) : super(key: key);
 
-  final DocumentReference? accoutParam;
+  final DocumentReference? ac;
+  final DocumentReference? ua;
 
   @override
   _PaginaDestinatarioWidgetState createState() =>
@@ -34,6 +39,40 @@ class _PaginaDestinatarioWidgetState extends State<PaginaDestinatarioWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PaginaDestinatarioModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        FFAppState().loader = true;
+      });
+      if (widget.ua != null) {
+        _model.userAccountData =
+            await UserAccountsRecord.getDocumentOnce(widget.ua!);
+        setState(() {
+          FFAppState().rutForm = _model.userAccountData!.recipientDocumentId;
+        });
+        setState(() {
+          _model.componenteDestinatarioModel.nameRecipientController?.text =
+              _model.userAccountData!.name;
+        });
+        setState(() {
+          _model.componenteDestinatarioModel.accountValueController?.value =
+              _model.userAccountData!.type;
+        });
+        setState(() {
+          _model.componenteDestinatarioModel.bankValueController?.value =
+              _model.userAccountData!.bank;
+        });
+        setState(() {
+          _model.componenteDestinatarioModel.numberAcountRecipientController
+              ?.text = _model.userAccountData!.accountNumber.toString();
+        });
+        setState(() {
+          _model.componenteDestinatarioModel.emailAddressRecipientController
+              ?.text = _model.userAccountData!.email;
+        });
+      }
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -60,7 +99,7 @@ class _PaginaDestinatarioWidgetState extends State<PaginaDestinatarioWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       appBar: responsiveVisibility(
         context: context,
         tablet: false,
@@ -86,7 +125,7 @@ class _PaginaDestinatarioWidgetState extends State<PaginaDestinatarioWidget> {
               ),
               title: Text(
                 FFLocalizations.of(context).getText(
-                  '2xxyt28g' /* Datos Bancarios Destinatario */,
+                  '2xxyt28g' /* Datos Destinatario */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineSmall,
               ),
@@ -99,45 +138,40 @@ class _PaginaDestinatarioWidgetState extends State<PaginaDestinatarioWidget> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (responsiveVisibility(
-            context: context,
-            phone: false,
-          ))
-            Container(
-              width: 250.0,
-              height: MediaQuery.sizeOf(context).height * 1.0,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-              ),
-              child: Visibility(
-                visible: responsiveVisibility(
-                  context: context,
-                  phone: false,
-                  tablet: false,
-                ),
-                child: wrapWithModel(
-                  model: _model.componenteMenuModel,
-                  updateCallback: () => setState(() {}),
-                  child: ComponenteMenuWidget(
-                    currentPage: 'agregar',
-                  ),
-                ),
-              ),
-            ),
+          wrapWithModel(
+            model: _model.menuComponentModel,
+            updateCallback: () => setState(() {}),
+            child: MenuComponentWidget(),
+          ),
           Container(
             width: MediaQuery.sizeOf(context).width * 1.0,
             height: MediaQuery.sizeOf(context).height * 1.0,
             constraints: BoxConstraints(
               maxWidth: 600.0,
             ),
-            decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primaryBackground,
-            ),
-            child: wrapWithModel(
-              model: _model.componenteDestinatarioModel,
-              updateCallback: () => setState(() {}),
-              child: ComponenteDestinatarioWidget(
-                accounParam: widget.accoutParam!,
+            decoration: BoxDecoration(),
+            child: Align(
+              alignment: AlignmentDirectional(0.0, -1.0),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
+                child: wrapWithModel(
+                  model: _model.componenteDestinatarioModel,
+                  updateCallback: () => setState(() {}),
+                  child: ComponenteDestinatarioWidget(
+                    accounParam: widget.ua != null
+                        ? _model.userAccountData?.account
+                        : widget.ac,
+                    userAccountParam: widget.ua,
+                    defaultRut: widget.ua != null
+                        ? _model.userAccountData?.recipientDocumentId
+                        : '',
+                    defaultBank:
+                        widget.ua != null ? _model.userAccountData?.bankId : '',
+                    defaultAccount: widget.ua != null
+                        ? _model.userAccountData?.typeAccountId
+                        : '',
+                  ),
+                ),
               ),
             ),
           ),

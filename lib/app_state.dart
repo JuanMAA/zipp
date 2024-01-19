@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
+import '/backend/schema/enums/enums.dart';
 import 'backend/api_requests/api_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
@@ -227,6 +229,112 @@ class FFAppState extends ChangeNotifier {
 
   void insertAtIndexInArrTest(int _index, String _value) {
     _arrTest.insert(_index, _value);
+  }
+
+  String _rutForm = '';
+  String get rutForm => _rutForm;
+  set rutForm(String _value) {
+    _rutForm = _value;
+  }
+
+  String _phoneForm = '';
+  String get phoneForm => _phoneForm;
+  set phoneForm(String _value) {
+    _phoneForm = _value;
+  }
+
+  List<InputDataStruct> _arrayForm = [];
+  List<InputDataStruct> get arrayForm => _arrayForm;
+  set arrayForm(List<InputDataStruct> _value) {
+    _arrayForm = _value;
+  }
+
+  void addToArrayForm(InputDataStruct _value) {
+    _arrayForm.add(_value);
+  }
+
+  void removeFromArrayForm(InputDataStruct _value) {
+    _arrayForm.remove(_value);
+  }
+
+  void removeAtIndexFromArrayForm(int _index) {
+    _arrayForm.removeAt(_index);
+  }
+
+  void updateArrayFormAtIndex(
+    int _index,
+    InputDataStruct Function(InputDataStruct) updateFn,
+  ) {
+    _arrayForm[_index] = updateFn(_arrayForm[_index]);
+  }
+
+  void insertAtIndexInArrayForm(int _index, InputDataStruct _value) {
+    _arrayForm.insert(_index, _value);
+  }
+
+  double _totalPay = 0;
+  double get totalPay => _totalPay;
+  set totalPay(double _value) {
+    _totalPay = _value;
+  }
+
+  double _totalComission = 0;
+  double get totalComission => _totalComission;
+  set totalComission(double _value) {
+    _totalComission = _value;
+  }
+
+  bool _loader = false;
+  bool get loader => _loader;
+  set loader(bool _value) {
+    _loader = _value;
+  }
+
+  List<dynamic> _typeAccountsArr = [
+    jsonDecode('{\"id\":\"CCT\",\"name\":\"Cuenta Corriente\"}'),
+    jsonDecode('{\"id\":\"CTV\",\"name\":\"Chequera Electrónica\"}'),
+    jsonDecode('{\"id\":\"CRUT\",\"name\":\"CuentaRUT\"}'),
+    jsonDecode('{\"id\":\"AHO\",\"name\":\"Cuenta Ahorro\"}')
+  ];
+  List<dynamic> get typeAccountsArr => _typeAccountsArr;
+  set typeAccountsArr(List<dynamic> _value) {
+    _typeAccountsArr = _value;
+  }
+
+  void addToTypeAccountsArr(dynamic _value) {
+    _typeAccountsArr.add(_value);
+  }
+
+  void removeFromTypeAccountsArr(dynamic _value) {
+    _typeAccountsArr.remove(_value);
+  }
+
+  void removeAtIndexFromTypeAccountsArr(int _index) {
+    _typeAccountsArr.removeAt(_index);
+  }
+
+  void updateTypeAccountsArrAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _typeAccountsArr[_index] = updateFn(_typeAccountsArr[_index]);
+  }
+
+  void insertAtIndexInTypeAccountsArr(int _index, dynamic _value) {
+    _typeAccountsArr.insert(_index, _value);
+  }
+
+  dynamic _cardList = jsonDecode('null');
+  dynamic get cardList => _cardList;
+  set cardList(dynamic _value) {
+    _cardList = _value;
+  }
+
+  dynamic _jsonArr = jsonDecode(
+      '{\"data\":{\"cards\":[{\"identifier\":\"0\",\"last_4_digits\":\"Seleccione una Tarjeta\"}]}}');
+  dynamic get jsonArr => _jsonArr;
+  set jsonArr(dynamic _value) {
+    _jsonArr = _value;
   }
 }
 

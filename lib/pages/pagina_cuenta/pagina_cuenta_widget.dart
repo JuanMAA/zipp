@@ -1,12 +1,10 @@
-import '/backend/backend.dart';
-import '/components/dynamic_component_widget.dart';
 import '/components/menu_component_widget.dart';
+import '/components/new_account_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,12 +15,10 @@ export 'pagina_cuenta_model.dart';
 class PaginaCuentaWidget extends StatefulWidget {
   const PaginaCuentaWidget({
     Key? key,
-    this.accountsParam,
-    this.userAccount,
+    required this.at,
   }) : super(key: key);
 
-  final DocumentReference? accountsParam;
-  final DocumentReference? userAccount;
+  final DocumentReference? at;
 
   @override
   _PaginaCuentaWidgetState createState() => _PaginaCuentaWidgetState();
@@ -37,13 +33,6 @@ class _PaginaCuentaWidgetState extends State<PaginaCuentaWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PaginaCuentaModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().valuesAndErrorsData = [];
-      });
-    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -96,7 +85,7 @@ class _PaginaCuentaWidgetState extends State<PaginaCuentaWidget> {
               ),
               title: Text(
                 FFLocalizations.of(context).getText(
-                  'xru8vjsa' /* Agregar */,
+                  '4yxxienz' /* Seleccionar cuenta */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineSmall,
               ),
@@ -105,80 +94,41 @@ class _PaginaCuentaWidgetState extends State<PaginaCuentaWidget> {
               elevation: 0.0,
             )
           : null,
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                if (responsiveVisibility(
-                  context: context,
-                  phone: false,
-                ))
-                  Container(
-                    width: 250.0,
-                    height: MediaQuery.sizeOf(context).height * 1.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                    child: wrapWithModel(
-                      model: _model.menuComponentModel,
-                      updateCallback: () => setState(() {}),
-                      child: MenuComponentWidget(),
-                    ),
-                  ),
-                Expanded(
-                  child: Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
-                    child: FutureBuilder<AccountsRecord>(
-                      future:
-                          AccountsRecord.getDocumentOnce(widget.accountsParam!),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 50.0,
-                              height: 50.0,
-                              child: SpinKitRing(
-                                color: FlutterFlowTheme.of(context).primary,
-                                size: 50.0,
-                              ),
-                            ),
-                          );
-                        }
-                        final containerAccountsRecord = snapshot.data!;
-                        return Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: MediaQuery.sizeOf(context).height * 1.0,
-                          constraints: BoxConstraints(
-                            maxWidth: 900.0,
-                          ),
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          child: wrapWithModel(
-                            model: _model.dynamicComponentModel,
-                            updateCallback: () => setState(() {}),
-                            child: DynamicComponentWidget(
-                              fieldsReferences: containerAccountsRecord.fields,
-                              accountReference: containerAccountsRecord,
-                              userAccountReference: widget.userAccount,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
+      body: Align(
+        alignment: AlignmentDirectional(0.0, 0.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            wrapWithModel(
+              model: _model.menuComponentModel,
+              updateCallback: () => setState(() {}),
+              child: MenuComponentWidget(),
+            ),
+            Align(
+              alignment: AlignmentDirectional(0.0, 0.0),
+              child: Container(
+                width: MediaQuery.sizeOf(context).width * 1.0,
+                height: MediaQuery.sizeOf(context).height * 1.0,
+                constraints: BoxConstraints(
+                  maxWidth: 600.0,
+                ),
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                ),
+                child: wrapWithModel(
+                  model: _model.newAccountComponentModel,
+                  updateCallback: () => setState(() {}),
+                  child: NewAccountComponentWidget(
+                    gridQty: 3,
+                    accountTypeData: widget.at!,
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

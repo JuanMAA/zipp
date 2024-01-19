@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/componentes/componente_mensaje/componente_mensaje_widget.dart';
+import '/components/title_widget_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -40,6 +41,8 @@ class ComponenteCategoriasModel
 
   // Stores action output result for [Firestore Query - Query a collection] action in componenteCategorias widget.
   List<AccountTypesRecord>? accountsData;
+  // Model for titleWidget component.
+  late TitleWidgetModel titleWidgetModel;
   // State field(s) for search widget.
   final searchKey = GlobalKey();
   FocusNode? searchFocusNode;
@@ -56,9 +59,12 @@ class ComponenteCategoriasModel
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    titleWidgetModel = createModel(context, () => TitleWidgetModel());
+  }
 
   void dispose() {
+    titleWidgetModel.dispose();
     searchFocusNode?.dispose();
 
     gridViewStreamSubscriptions2.forEach((s) => s?.cancel());

@@ -92,47 +92,25 @@ class _PaginaAgregarCuentaWidgetState extends State<PaginaAgregarCuentaWidget> {
       body: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (responsiveVisibility(
-            context: context,
-            phone: false,
-          ))
-            Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
-              child: Container(
-                width: 250.0,
-                height: MediaQuery.sizeOf(context).height * 1.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                ),
-                child: wrapWithModel(
-                  model: _model.menuComponentModel,
-                  updateCallback: () => setState(() {}),
-                  child: MenuComponentWidget(),
-                ),
-              ),
+          wrapWithModel(
+            model: _model.menuComponentModel,
+            updateCallback: () => setState(() {}),
+            child: MenuComponentWidget(),
+          ),
+          Container(
+            width: MediaQuery.sizeOf(context).width * 1.0,
+            height: MediaQuery.sizeOf(context).height * 1.0,
+            constraints: BoxConstraints(
+              maxWidth: 600.0,
             ),
-          Expanded(
-            child: Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                child: Container(
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: MediaQuery.sizeOf(context).height * 1.0,
-                  constraints: BoxConstraints(
-                    maxWidth: 900.0,
-                  ),
-                  decoration: BoxDecoration(),
-                  alignment: AlignmentDirectional(0.0, 0.0),
-                  child: wrapWithModel(
-                    model: _model.componenteCategoriasModel,
-                    updateCallback: () => setState(() {}),
-                    child: ComponenteCategoriasWidget(
-                      gridQty: 3,
-                    ),
-                  ),
-                ),
+            decoration: BoxDecoration(),
+            child: wrapWithModel(
+              model: _model.componenteCategoriasModel,
+              updateCallback: () => setState(() {}),
+              child: ComponenteCategoriasWidget(
+                gridQty: 3,
               ),
             ),
           ),

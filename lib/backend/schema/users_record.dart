@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
+import '/backend/schema/enums/enums.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -61,16 +62,6 @@ class UsersRecord extends FirestoreRecord {
   DateTime? get createdTime => _createdTime;
   bool hasCreatedTime() => _createdTime != null;
 
-  // "first_name" field.
-  String? _firstName;
-  String get firstName => _firstName ?? '';
-  bool hasFirstName() => _firstName != null;
-
-  // "last_name" field.
-  String? _lastName;
-  String get lastName => _lastName ?? '';
-  bool hasLastName() => _lastName != null;
-
   // "document_id" field.
   String? _documentId;
   String get documentId => _documentId ?? '';
@@ -86,8 +77,6 @@ class UsersRecord extends FirestoreRecord {
     _phoneNumber = snapshotData['phone_number'] as String?;
     _photoUrl = snapshotData['photo_url'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
-    _firstName = snapshotData['first_name'] as String?;
-    _lastName = snapshotData['last_name'] as String?;
     _documentId = snapshotData['document_id'] as String?;
   }
 
@@ -134,8 +123,6 @@ Map<String, dynamic> createUsersRecordData({
   String? phoneNumber,
   String? photoUrl,
   DateTime? createdTime,
-  String? firstName,
-  String? lastName,
   String? documentId,
 }) {
   final firestoreData = mapToFirestore(
@@ -149,8 +136,6 @@ Map<String, dynamic> createUsersRecordData({
       'phone_number': phoneNumber,
       'photo_url': photoUrl,
       'created_time': createdTime,
-      'first_name': firstName,
-      'last_name': lastName,
       'document_id': documentId,
     }.withoutNulls,
   );
@@ -172,8 +157,6 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.phoneNumber == e2?.phoneNumber &&
         e1?.photoUrl == e2?.photoUrl &&
         e1?.createdTime == e2?.createdTime &&
-        e1?.firstName == e2?.firstName &&
-        e1?.lastName == e2?.lastName &&
         e1?.documentId == e2?.documentId;
   }
 
@@ -188,8 +171,6 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.phoneNumber,
         e?.photoUrl,
         e?.createdTime,
-        e?.firstName,
-        e?.lastName,
         e?.documentId
       ]);
 

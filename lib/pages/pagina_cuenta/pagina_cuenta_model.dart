@@ -1,47 +1,35 @@
-import '/backend/backend.dart';
-import '/components/dynamic_component_widget.dart';
 import '/components/menu_component_widget.dart';
+import '/components/new_account_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'pagina_cuenta_widget.dart' show PaginaCuentaWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class PaginaCuentaModel extends FlutterFlowModel<PaginaCuentaWidget> {
-  ///  Local state fields for this page.
-
-  List<String> valuesArray = [];
-  void addToValuesArray(String item) => valuesArray.add(item);
-  void removeFromValuesArray(String item) => valuesArray.remove(item);
-  void removeAtIndexFromValuesArray(int index) => valuesArray.removeAt(index);
-  void insertAtIndexInValuesArray(int index, String item) =>
-      valuesArray.insert(index, item);
-  void updateValuesArrayAtIndex(int index, Function(String) updateFn) =>
-      valuesArray[index] = updateFn(valuesArray[index]);
-
   ///  State fields for stateful widgets in this page.
 
   // Model for menuComponent component.
   late MenuComponentModel menuComponentModel;
-  // Model for dynamicComponent component.
-  late DynamicComponentModel dynamicComponentModel;
+  // Model for newAccountComponent component.
+  late NewAccountComponentModel newAccountComponentModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     menuComponentModel = createModel(context, () => MenuComponentModel());
-    dynamicComponentModel = createModel(context, () => DynamicComponentModel());
+    newAccountComponentModel =
+        createModel(context, () => NewAccountComponentModel());
   }
 
   void dispose() {
     menuComponentModel.dispose();
-    dynamicComponentModel.dispose();
+    newAccountComponentModel.dispose();
   }
 
   /// Action blocks are added here.

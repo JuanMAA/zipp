@@ -6,6 +6,8 @@ import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
+import '/backend/schema/enums/enums.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -115,23 +117,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
         ),
         FFRoute(
-          name: 'paginaMiPerfil',
-          path: '/perfil',
-          requireAuth: true,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'paginaMiPerfil')
-              : PaginaMiPerfilWidget(
-                  userProfile: params.getParam('userProfile',
-                      ParamType.DocumentReference, false, ['users']),
-                ),
-        ),
-        FFRoute(
           name: 'paginaDetallePago',
           path: '/pago',
           requireAuth: true,
           builder: (context, params) => PaginaDetallePagoWidget(
-            userAccount: params.getParam('userAccount',
-                ParamType.DocumentReference, false, ['userAccounts']),
+            ua: params.getParam(
+                'ua', ParamType.DocumentReference, false, ['userAccounts']),
           ),
         ),
         FFRoute(
@@ -169,34 +160,34 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : PaginaAgregarCuentaWidget(),
         ),
         FFRoute(
-          name: 'paginaTargetas',
-          path: '/targetas',
+          name: 'paginaTarjetas',
+          path: '/tarjetas',
           requireAuth: true,
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'paginaTargetas')
-              : PaginaTargetasWidget(
+              ? NavBarPage(initialPage: 'paginaTarjetas')
+              : PaginaTarjetasWidget(
                   camposDinamicos: params.getParam<dynamic>(
                       'camposDinamicos', ParamType.JSON, true),
                 ),
         ),
         FFRoute(
-          name: 'paginaCuenta',
+          name: 'paginaDetallesCuenta',
           path: '/cuenta',
           requireAuth: true,
-          builder: (context, params) => PaginaCuentaWidget(
-            accountsParam: params.getParam('accountsParam',
-                ParamType.DocumentReference, false, ['accounts']),
-            userAccount: params.getParam('userAccount',
-                ParamType.DocumentReference, false, ['userAccounts']),
+          builder: (context, params) => PaginaDetallesCuentaWidget(
+            ac: params.getParam(
+                'ac', ParamType.DocumentReference, false, ['accounts']),
+            ua: params.getParam(
+                'ua', ParamType.DocumentReference, false, ['userAccounts']),
           ),
         ),
         FFRoute(
-          name: 'newAccount',
-          path: '/newAccount',
+          name: 'paginaCuenta',
+          path: '/nueva_cuenta',
           requireAuth: true,
-          builder: (context, params) => NewAccountWidget(
-            accountTypeSelected: params.getParam('accountTypeSelected',
-                ParamType.DocumentReference, false, ['accountTypes']),
+          builder: (context, params) => PaginaCuentaWidget(
+            at: params.getParam(
+                'at', ParamType.DocumentReference, false, ['accountTypes']),
           ),
         ),
         FFRoute(
@@ -204,8 +195,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/destinatario',
           requireAuth: true,
           builder: (context, params) => PaginaDestinatarioWidget(
-            accoutParam: params.getParam('accoutParam',
-                ParamType.DocumentReference, false, ['accounts']),
+            ac: params.getParam(
+                'ac', ParamType.DocumentReference, false, ['accounts']),
+            ua: params.getParam(
+                'ua', ParamType.DocumentReference, false, ['userAccounts']),
           ),
         ),
         FFRoute(
@@ -224,8 +217,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/editar_cuenta',
           requireAuth: true,
           builder: (context, params) => PaginaEditarCuentaWidget(
-            userAccount: params.getParam('userAccount',
-                ParamType.DocumentReference, false, ['userAccounts']),
+            ua: params.getParam(
+                'ua', ParamType.DocumentReference, false, ['userAccounts']),
           ),
         ),
         FFRoute(

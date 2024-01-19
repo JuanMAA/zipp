@@ -117,12 +117,18 @@ class FirebaseAuthManager extends AuthManager
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: ${e.message!}')),
+        SnackBar(
+            content: Text(FFLocalizations.of(context).getText(
+          'efvtwj7k' /* Error en la autenticación, rei... */,
+        ))),
       );
       return null;
     }
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Password reset email sent')),
+      SnackBar(
+          content: Text(FFLocalizations.of(context).getText(
+        'ec5hfa1e' /* El enlace para resetear su con... */,
+      ))),
     );
   }
 
@@ -188,7 +194,9 @@ class FirebaseAuthManager extends AuthManager
       } else if (phoneAuthManager.phoneAuthError != null) {
         final e = phoneAuthManager.phoneAuthError!;
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Error: ${e.message!}'),
+          content: Text(FFLocalizations.of(context).getText(
+            'efvtwj7k' /* Error en la autenticación, rei... */,
+          )),
         ));
         phoneAuthManager.update(() => phoneAuthManager.phoneAuthError = null);
       }
@@ -294,8 +302,12 @@ class FirebaseAuthManager extends AuthManager
           : ZippFirebaseUser.fromUserCredential(userCredential);
     } on FirebaseAuthException catch (e) {
       final errorMsg = e.message?.contains('auth/email-already-in-use') ?? false
-          ? 'The email is already in use by a different account'
-          : 'Error: ${e.message!}';
+          ? FFLocalizations.of(context).getText(
+              'w50xnxo0' /* El email ya se encuentra regis... */,
+            )
+          : FFLocalizations.of(context).getText(
+              'efvtwj7k' /* Error en la autenticación, rei... */,
+            );
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(errorMsg)),

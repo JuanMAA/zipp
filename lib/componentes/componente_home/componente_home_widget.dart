@@ -1,10 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/componentes/componente_mensaje/componente_mensaje_widget.dart';
+import '/components/title_widget_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -27,18 +28,6 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
   late ComponenteHomeModel _model;
 
   final animationsMap = {
-    'textOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeIn,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 0.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
     'listViewOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
@@ -78,6 +67,13 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
     super.initState();
     _model = createModel(context, () => ComponenteHomeModel());
 
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -94,39 +90,19 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
 
     return Column(
       mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Align(
-          alignment: AlignmentDirectional(-1.0, 0.0),
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24.0, 10.0, 24.0, 0.0),
-            child: Text(
-              FFLocalizations.of(context).getText(
-                'wj893q2l' /* Cuentas que transfiero */,
-              ),
-              textAlign: TextAlign.start,
-              style: FlutterFlowTheme.of(context).bodySmall.override(
-                    fontFamily: 'Lexend',
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    fontSize:
-                        MediaQuery.sizeOf(context).width > kBreakpointSmall
-                            ? 19.0
-                            : 14.0,
-                    fontWeight: FontWeight.w500,
-                  ),
-            ),
-          ),
-        ),
-        Align(
-          alignment: AlignmentDirectional(-1.0, 0.0),
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24.0, 5.0, 24.0, 20.0),
-            child: Text(
-              _model.currentMenu == 'cuentas'
+        Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+          child: wrapWithModel(
+            model: _model.titleWidgetModel,
+            updateCallback: () => setState(() {}),
+            child: TitleWidgetWidget(
+              title: 'Cuentas que transfiero',
+              subtitle: _model.currentMenu == 'cuentas'
                   ? 'Nosotros transferimos tu pago al destinatario, a nombre tuyo, y con toda la información del pago incluida.'
                   : 'Puedes pagar varias al mismo tiempo, y queda pagada el mismo día.',
-              textAlign: TextAlign.start,
-              style: FlutterFlowTheme.of(context).bodySmall,
-            ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation']!),
+            ),
           ),
         ),
         Padding(
@@ -135,8 +111,14 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
             width: MediaQuery.sizeOf(context).width * 1.0,
             height: 50.0,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primary,
-              borderRadius: BorderRadius.circular(40.0),
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? FlutterFlowTheme.of(context).secondaryBackground
+                  : FlutterFlowTheme.of(context).primaryBackground,
+              borderRadius: BorderRadius.circular(8.0),
+              border: Border.all(
+                color: FlutterFlowTheme.of(context).alternate,
+                width: 1.0,
+              ),
             ),
             child: Padding(
               padding: EdgeInsets.all(4.0),
@@ -161,8 +143,15 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
                         decoration: BoxDecoration(
                           color: _model.currentMenu == 'accounts'
                               ? FlutterFlowTheme.of(context).secondaryBackground
-                              : FlutterFlowTheme.of(context).primary,
-                          borderRadius: BorderRadius.circular(40.0),
+                              : FlutterFlowTheme.of(context).primaryBackground,
+                          borderRadius: BorderRadius.circular(8.0),
+                          border: Border.all(
+                            color: _model.currentMenu == 'accounts'
+                                ? FlutterFlowTheme.of(context).alternate
+                                : FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                            width: 1.0,
+                          ),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -172,7 +161,7 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
                               Icons.payment_sharp,
                               color: _model.currentMenu == 'accounts'
                                   ? FlutterFlowTheme.of(context).primaryText
-                                  : Colors.white,
+                                  : FlutterFlowTheme.of(context).secondaryText,
                               size: 16.0,
                             ),
                             Padding(
@@ -189,7 +178,8 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
                                       color: _model.currentMenu == 'accounts'
                                           ? FlutterFlowTheme.of(context)
                                               .primaryText
-                                          : Colors.white,
+                                          : FlutterFlowTheme.of(context)
+                                              .secondaryText,
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -207,19 +197,28 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        // setCurrentMenuValue
-                        setState(() {
-                          _model.currentMenu = 'services';
-                        });
+                        if (false) {
+                          // setCurrentMenuValue
+                          setState(() {
+                            _model.currentMenu = 'services';
+                          });
+                        }
                       },
                       child: Container(
                         width: 115.0,
                         height: 100.0,
                         decoration: BoxDecoration(
                           color: _model.currentMenu == 'services'
-                              ? FlutterFlowTheme.of(context).secondary
-                              : FlutterFlowTheme.of(context).primary,
-                          borderRadius: BorderRadius.circular(40.0),
+                              ? FlutterFlowTheme.of(context).secondaryBackground
+                              : FlutterFlowTheme.of(context).primaryBackground,
+                          borderRadius: BorderRadius.circular(8.0),
+                          border: Border.all(
+                            color: _model.currentMenu == 'services'
+                                ? FlutterFlowTheme.of(context).alternate
+                                : FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                            width: 1.0,
+                          ),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -229,28 +228,57 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
                               Icons.room_service_rounded,
                               color: _model.currentMenu == 'services'
                                   ? FlutterFlowTheme.of(context).primaryText
-                                  : Colors.white,
+                                  : FlutterFlowTheme.of(context).secondaryText,
                               size: 16.0,
                             ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  4.0, 0.0, 0.0, 0.0),
-                              child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'pzv21uer' /* Servicios */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Outfit',
-                                      color: _model.currentMenu == 'services'
-                                          ? FlutterFlowTheme.of(context)
-                                              .primaryText
-                                          : Colors.white,
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.w500,
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      4.0, 0.0, 0.0, 0.0),
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'pzv21uer' /* Servicios */,
                                     ),
-                              ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Outfit',
+                                          color:
+                                              _model.currentMenu == 'services'
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .primaryText
+                                                  : FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                          fontSize: 14.0,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      4.0, 0.0, 0.0, 0.0),
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'f9qogllw' /* (próximamente) */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          color:
+                                              _model.currentMenu == 'services'
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .primaryText
+                                                  : FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                          fontSize: 10.0,
+                                        ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -267,9 +295,9 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
                         height: 100.0,
                         decoration: BoxDecoration(
                           color: FFAppState().categorySelected == 'scheduled'
-                              ? FlutterFlowTheme.of(context).secondary
-                              : FlutterFlowTheme.of(context).primary,
-                          borderRadius: BorderRadius.circular(40.0),
+                              ? FlutterFlowTheme.of(context).secondaryBackground
+                              : FlutterFlowTheme.of(context).primaryBackground,
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: Visibility(
                           visible: responsiveVisibility(
@@ -283,7 +311,8 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
                             children: [
                               Icon(
                                 Icons.timer,
-                                color: Colors.white,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
                                 size: 16.0,
                               ),
                               Column(
@@ -301,7 +330,8 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Lexend',
-                                            color: Colors.white,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
                                           ),
                                     ),
                                   ),
@@ -316,7 +346,8 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Lexend',
-                                            color: Colors.white,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
                                             fontSize: 10.0,
                                           ),
                                     ),
@@ -420,15 +451,10 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
         Expanded(
           child: StreamBuilder<List<UserAccountsRecord>>(
             stream: queryUserAccountsRecord(
-              queryBuilder: (userAccountsRecord) => userAccountsRecord
-                  .where(
-                    'user',
-                    isEqualTo: currentUserReference,
-                  )
-                  .where(
-                    'type',
-                    isEqualTo: _model.currentMenu,
-                  ),
+              queryBuilder: (userAccountsRecord) => userAccountsRecord.where(
+                'user',
+                isEqualTo: currentUserReference,
+              ),
             ),
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
@@ -446,6 +472,11 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
               }
               List<UserAccountsRecord> listViewAccountsUserAccountsRecordList =
                   snapshot.data!;
+              if (listViewAccountsUserAccountsRecordList.isEmpty) {
+                return ComponenteMensajeWidget(
+                  message: 'Aún no has registrado cuentas ni servicios.',
+                );
+              }
               return ListView.builder(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.vertical,
@@ -467,8 +498,8 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
                         child: Padding(
                           padding: EdgeInsets.all(12.0),
                           child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
@@ -480,78 +511,54 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Expanded(
-                                      child: Container(
-                                        width: double.infinity,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                          border: Border.all(
+                                      child: Opacity(
+                                        opacity: 8.0,
+                                        child: Container(
+                                          width: double.infinity,
+                                          decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            width: 1.0,
+                                                .primaryBackground,
+                                            border: Border.all(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              width: 1.0,
+                                            ),
                                           ),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 10.0, 0.0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.stretch,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        24.0, 24.0, 24.0, 16.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          listViewAccountsUserAccountsRecord
-                                                              .name,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Plus Jakarta Sans',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                                fontSize: 14.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      4.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'l7wuzxzo' /* Due Sep 1, 2021 */,
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 10.0, 0.0),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.stretch,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(24.0, 24.0,
+                                                          24.0, 16.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              listViewAccountsUserAccountsRecord
+                                                                  .name,
+                                                              'Sin destinatario (click para agregar).',
                                                             ),
-                                                            textAlign:
-                                                                TextAlign.start,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .labelSmall
+                                                                .labelMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Plus Jakarta Sans',
@@ -559,284 +566,310 @@ class _ComponenteHomeWidgetState extends State<ComponenteHomeWidget>
                                                                           context)
                                                                       .primaryText,
                                                                   fontSize:
-                                                                      12.0,
+                                                                      14.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
                                                                 ),
                                                           ),
-                                                        ),
-                                                        Row(
+                                                          Text(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              listViewAccountsUserAccountsRecord
+                                                                  .comment,
+                                                              'Sin comentarios adicionales.',
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Plus Jakarta Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  fontSize:
+                                                                      16.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
+                                                          ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              if (_model
+                                                                      .currentMenu !=
+                                                                  'accounts')
+                                                                Theme(
+                                                                  data:
+                                                                      ThemeData(
+                                                                    checkboxTheme:
+                                                                        CheckboxThemeData(
+                                                                      shape:
+                                                                          RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(4.0),
+                                                                      ),
+                                                                    ),
+                                                                    unselectedWidgetColor:
+                                                                        Color(
+                                                                            0xFF57636C),
+                                                                  ),
+                                                                  child:
+                                                                      Checkbox(
+                                                                    value: _model
+                                                                            .checkboxValueMap[
+                                                                        listViewAccountsUserAccountsRecord] ??= true,
+                                                                    onChanged:
+                                                                        (newValue) async {
+                                                                      setState(() =>
+                                                                          _model.checkboxValueMap[listViewAccountsUserAccountsRecord] =
+                                                                              newValue!);
+                                                                    },
+                                                                    activeColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                  ),
+                                                                ),
+                                                              Text(
+                                                                '${valueOrDefault<String>(
+                                                                  listViewAccountsUserAccountsRecord
+                                                                      .currency,
+                                                                  '\$',
+                                                                )}${listViewAccountsUserAccountsRecord.amount.toString()}',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .displaySmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Outfit',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                      fontSize:
+                                                                          36.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Expanded(
+                                                        child: Column(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
                                                                   .center,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .end,
                                                           children: [
-                                                            if (_model
-                                                                    .currentMenu !=
-                                                                'accounts')
-                                                              Theme(
-                                                                data: ThemeData(
-                                                                  checkboxTheme:
-                                                                      CheckboxThemeData(
-                                                                    shape:
-                                                                        RoundedRectangleBorder(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              4.0),
-                                                                    ),
-                                                                  ),
-                                                                  unselectedWidgetColor:
-                                                                      Color(
-                                                                          0xFF57636C),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          5.0),
+                                                              child:
+                                                                  FFButtonWidget(
+                                                                onPressed:
+                                                                    () async {
+                                                                  context
+                                                                      .pushNamed(
+                                                                    'paginaEditarCuenta',
+                                                                    queryParameters:
+                                                                        {
+                                                                      'ua':
+                                                                          serializeParam(
+                                                                        listViewAccountsUserAccountsRecord
+                                                                            .reference,
+                                                                        ParamType
+                                                                            .DocumentReference,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                    extra: <String,
+                                                                        dynamic>{
+                                                                      kTransitionInfoKey:
+                                                                          TransitionInfo(
+                                                                        hasTransition:
+                                                                            true,
+                                                                        transitionType:
+                                                                            PageTransitionType.rightToLeft,
+                                                                      ),
+                                                                    },
+                                                                  );
+                                                                },
+                                                                text: FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'yu8ew77j' /* Ver Mas */,
                                                                 ),
-                                                                child: Checkbox(
-                                                                  value: _model
-                                                                          .checkboxValueMap[
-                                                                      listViewAccountsUserAccountsRecord] ??= true,
-                                                                  onChanged:
-                                                                      (newValue) async {
-                                                                    setState(() =>
-                                                                        _model.checkboxValueMap[listViewAccountsUserAccountsRecord] =
-                                                                            newValue!);
-                                                                  },
-                                                                  activeColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
+                                                                icon: Icon(
+                                                                  Icons
+                                                                      .visibility_outlined,
+                                                                  size: 15.0,
+                                                                ),
+                                                                options:
+                                                                    FFButtonOptions(
+                                                                  width: 110.0,
+                                                                  height: 40.0,
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  iconPadding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .info,
+                                                                  textStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Plus Jakarta Sans',
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize:
+                                                                            14.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                      ),
+                                                                  elevation:
+                                                                      2.0,
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: Colors
+                                                                        .transparent,
+                                                                    width: 1.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              40.0),
                                                                 ),
                                                               ),
-                                                            Text(
-                                                              '${listViewAccountsUserAccountsRecord.currency}${listViewAccountsUserAccountsRecord.amount.toString()}',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .displaySmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Outfit',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                    fontSize:
-                                                                        36.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          5.0),
+                                                              child:
+                                                                  FFButtonWidget(
+                                                                onPressed:
+                                                                    () async {
+                                                                  context
+                                                                      .pushNamed(
+                                                                    'paginaDetallePago',
+                                                                    queryParameters:
+                                                                        {
+                                                                      'ua':
+                                                                          serializeParam(
+                                                                        listViewAccountsUserAccountsRecord
+                                                                            .reference,
+                                                                        ParamType
+                                                                            .DocumentReference,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                    extra: <String,
+                                                                        dynamic>{
+                                                                      kTransitionInfoKey:
+                                                                          TransitionInfo(
+                                                                        hasTransition:
+                                                                            true,
+                                                                        transitionType:
+                                                                            PageTransitionType.rightToLeft,
+                                                                      ),
+                                                                    },
+                                                                  );
+                                                                },
+                                                                text: FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  '9friwsm3' /* Pagar */,
+                                                                ),
+                                                                icon: Icon(
+                                                                  Icons
+                                                                      .payment_sharp,
+                                                                  size: 15.0,
+                                                                ),
+                                                                options:
+                                                                    FFButtonOptions(
+                                                                  width: 110.0,
+                                                                  height: 40.0,
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  iconPadding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  textStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Plus Jakarta Sans',
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize:
+                                                                            14.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                      ),
+                                                                  elevation:
+                                                                      2.0,
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: Colors
+                                                                        .transparent,
+                                                                    width: 1.0,
                                                                   ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              40.0),
+                                                                ),
+                                                              ),
                                                             ),
                                                           ],
                                                         ),
-                                                      ],
-                                                    ),
-                                                    Expanded(
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .end,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        5.0),
-                                                            child:
-                                                                FFButtonWidget(
-                                                              onPressed:
-                                                                  () async {
-                                                                context
-                                                                    .pushNamed(
-                                                                  'paginaEditarCuenta',
-                                                                  queryParameters:
-                                                                      {
-                                                                    'userAccount':
-                                                                        serializeParam(
-                                                                      listViewAccountsUserAccountsRecord
-                                                                          .reference,
-                                                                      ParamType
-                                                                          .DocumentReference,
-                                                                    ),
-                                                                  }.withoutNulls,
-                                                                );
-                                                              },
-                                                              text: FFLocalizations
-                                                                      .of(context)
-                                                                  .getText(
-                                                                'yu8ew77j' /* Ver Mas */,
-                                                              ),
-                                                              icon: Icon(
-                                                                Icons
-                                                                    .visibility_outlined,
-                                                                size: 15.0,
-                                                              ),
-                                                              options:
-                                                                  FFButtonOptions(
-                                                                width: 110.0,
-                                                                height: 40.0,
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                iconPadding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                                textStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontSize:
-                                                                          14.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500,
-                                                                    ),
-                                                                elevation: 2.0,
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: Colors
-                                                                      .transparent,
-                                                                  width: 1.0,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            40.0),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        5.0),
-                                                            child:
-                                                                FFButtonWidget(
-                                                              onPressed: () {
-                                                                print(
-                                                                    'Button pressed ...');
-                                                              },
-                                                              text: FFLocalizations
-                                                                      .of(context)
-                                                                  .getText(
-                                                                '9friwsm3' /* Pagar */,
-                                                              ),
-                                                              icon: Icon(
-                                                                Icons
-                                                                    .payment_sharp,
-                                                                size: 15.0,
-                                                              ),
-                                                              options:
-                                                                  FFButtonOptions(
-                                                                width: 110.0,
-                                                                height: 40.0,
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                iconPadding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                textStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontSize:
-                                                                          14.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500,
-                                                                    ),
-                                                                elevation: 2.0,
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: Colors
-                                                                      .transparent,
-                                                                  width: 1.0,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            40.0),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                              Divider(
-                                                height: 4.0,
-                                                thickness: 2.0,
-                                                indent: 20.0,
-                                                endIndent: 20.0,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        22.0, 15.0, 22.0, 24.0),
-                                                child: Text(
-                                                  functions.arrayValuesToString(
-                                                      listViewAccountsUserAccountsRecord
-                                                          .values
-                                                          .toList())!,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        fontSize: 13.0,
-                                                      ),
-                                                ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),

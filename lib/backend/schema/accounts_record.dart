@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
+import '/backend/schema/enums/enums.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -56,6 +57,11 @@ class AccountsRecord extends FirestoreRecord {
   String get email => _email ?? '';
   bool hasEmail() => _email != null;
 
+  // "hidden" field.
+  bool? _hidden;
+  bool get hidden => _hidden ?? false;
+  bool hasHidden() => _hidden != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _fields = getDataList(snapshotData['fields']);
@@ -65,6 +71,7 @@ class AccountsRecord extends FirestoreRecord {
     _accountType = snapshotData['account_type'] as DocumentReference?;
     _operation = snapshotData['operation'] as String?;
     _email = snapshotData['email'] as String?;
+    _hidden = snapshotData['hidden'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -109,6 +116,7 @@ Map<String, dynamic> createAccountsRecordData({
   DocumentReference? accountType,
   String? operation,
   String? email,
+  bool? hidden,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -119,6 +127,7 @@ Map<String, dynamic> createAccountsRecordData({
       'account_type': accountType,
       'operation': operation,
       'email': email,
+      'hidden': hidden,
     }.withoutNulls,
   );
 
@@ -138,7 +147,8 @@ class AccountsRecordDocumentEquality implements Equality<AccountsRecord> {
         e1?.logo == e2?.logo &&
         e1?.accountType == e2?.accountType &&
         e1?.operation == e2?.operation &&
-        e1?.email == e2?.email;
+        e1?.email == e2?.email &&
+        e1?.hidden == e2?.hidden;
   }
 
   @override
@@ -150,7 +160,8 @@ class AccountsRecordDocumentEquality implements Equality<AccountsRecord> {
         e?.logo,
         e?.accountType,
         e?.operation,
-        e?.email
+        e?.email,
+        e?.hidden
       ]);
 
   @override

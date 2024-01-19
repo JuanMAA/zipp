@@ -1,10 +1,13 @@
-import '/componentes/componente_menu/componente_menu_widget.dart';
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/componentes/componente_pago/componente_pago_widget.dart';
+import '/components/menu_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,10 +18,10 @@ export 'pagina_detalle_pago_model.dart';
 class PaginaDetallePagoWidget extends StatefulWidget {
   const PaginaDetallePagoWidget({
     Key? key,
-    this.userAccount,
+    this.ua,
   }) : super(key: key);
 
-  final DocumentReference? userAccount;
+  final DocumentReference? ua;
 
   @override
   _PaginaDetallePagoWidgetState createState() =>
@@ -34,6 +37,14 @@ class _PaginaDetallePagoWidgetState extends State<PaginaDetallePagoWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PaginaDetallePagoModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (widget.ua != null) {
+        _model.userAccountData =
+            await UserAccountsRecord.getDocumentOnce(widget.ua!);
+      }
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -60,7 +71,7 @@ class _PaginaDetallePagoWidgetState extends State<PaginaDetallePagoWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       appBar: responsiveVisibility(
         context: context,
         tablet: false,
@@ -100,37 +111,26 @@ class _PaginaDetallePagoWidgetState extends State<PaginaDetallePagoWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          if (responsiveVisibility(
-            context: context,
-            phone: false,
-          ))
-            Container(
-              width: 250.0,
-              height: MediaQuery.sizeOf(context).height * 1.0,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-              ),
-              child: wrapWithModel(
-                model: _model.componenteMenuModel,
-                updateCallback: () => setState(() {}),
-                child: ComponenteMenuWidget(
-                  currentPage: 'agregar',
-                ),
-              ),
+          Flexible(
+            child: wrapWithModel(
+              model: _model.menuComponentModel,
+              updateCallback: () => setState(() {}),
+              child: MenuComponentWidget(),
             ),
+          ),
           Container(
             width: MediaQuery.sizeOf(context).width * 1.0,
             height: MediaQuery.sizeOf(context).height * 1.0,
             constraints: BoxConstraints(
               maxWidth: 600.0,
             ),
-            decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primaryBackground,
-            ),
+            decoration: BoxDecoration(),
             child: wrapWithModel(
               model: _model.componentePagoModel,
               updateCallback: () => setState(() {}),
-              child: ComponentePagoWidget(),
+              child: ComponentePagoWidget(
+                userAccountParam: widget.ua,
+              ),
             ),
           ),
         ],

@@ -169,7 +169,7 @@ class _MenuComponentWidgetState extends State<MenuComponentWidget> {
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'kmfk6i71' /* Light Mode */,
+                                          'kmfk6i71' /* Light */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -243,7 +243,7 @@ class _MenuComponentWidgetState extends State<MenuComponentWidget> {
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'nafxvvc1' /* Dark Mode */,
+                                          'nafxvvc1' /* Dark */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -280,34 +280,35 @@ class _MenuComponentWidgetState extends State<MenuComponentWidget> {
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Container(
-                      width: 50.0,
-                      height: 50.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).accent1,
-                        borderRadius: BorderRadius.circular(12.0),
-                        border: Border.all(
-                          color: FlutterFlowTheme.of(context).primary,
-                          width: 2.0,
-                        ),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(2.0),
-                        child: AuthUserStreamWidget(
-                          builder: (context) => ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: CachedNetworkImage(
-                              fadeInDuration: Duration(milliseconds: 500),
-                              fadeOutDuration: Duration(milliseconds: 500),
-                              imageUrl: currentUserPhoto,
-                              width: 44.0,
-                              height: 44.0,
-                              fit: BoxFit.cover,
+                    if (currentUserPhoto != null && currentUserPhoto != '')
+                      AuthUserStreamWidget(
+                        builder: (context) => Container(
+                          width: 50.0,
+                          height: 50.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).accent1,
+                            borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).primary,
+                              width: 2.0,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(2.0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: CachedNetworkImage(
+                                fadeInDuration: Duration(milliseconds: 500),
+                                fadeOutDuration: Duration(milliseconds: 500),
+                                imageUrl: currentUserPhoto,
+                                width: 44.0,
+                                height: 44.0,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
                     Expanded(
                       child: Padding(
                         padding:
@@ -318,7 +319,7 @@ class _MenuComponentWidgetState extends State<MenuComponentWidget> {
                           children: [
                             AuthUserStreamWidget(
                               builder: (context) => Text(
-                                '${currentUserDisplayName}${valueOrDefault(currentUserDocument?.firstName, '')}',
+                                '${currentUserDisplayName}',
                                 style: FlutterFlowTheme.of(context).bodyLarge,
                               ),
                             ),

@@ -4,13 +4,14 @@ import '/components/logo_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:easy_debounce/easy_debounce.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'componente_login_model.dart';
 export 'componente_login_model.dart';
@@ -42,17 +43,14 @@ class _ComponenteLoginWidgetState extends State<ComponenteLoginWidget> {
     _model.primerNombreController ??= TextEditingController();
     _model.primerNombreFocusNode ??= FocusNode();
 
-    _model.segundoNombreController ??= TextEditingController();
-    _model.segundoNombreFocusNode ??= FocusNode();
-
-    _model.documentIdController ??= TextEditingController();
-    _model.documentIdFocusNode ??= FocusNode();
-
     _model.passwordCreateController ??= TextEditingController();
     _model.passwordCreateFocusNode ??= FocusNode();
 
     _model.passwordConfirmController ??= TextEditingController();
     _model.passwordConfirmFocusNode ??= FocusNode();
+
+    _model.telefonoController ??= TextEditingController();
+    _model.telefonoFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -79,22 +77,6 @@ class _ComponenteLoginWidgetState extends State<ComponenteLoginWidget> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (Theme.of(context).brightness == Brightness.dark)
-                  Image.asset(
-                    'assets/images/logo-svg-zippy_copia.png',
-                    width: 170.0,
-                    height: 60.0,
-                    fit: BoxFit.fitWidth,
-                  ),
-              ],
-            ),
-          ),
           wrapWithModel(
             model: _model.logoComponentModel,
             updateCallback: () => setState(() {}),
@@ -131,7 +113,14 @@ class _ComponenteLoginWidgetState extends State<ComponenteLoginWidget> {
                           FFLocalizations.of(context).getText(
                             'wwryhvil' /* Crea tu cuenta a continuación */,
                           ),
-                          style: FlutterFlowTheme.of(context).titleMedium,
+                          style: FlutterFlowTheme.of(context)
+                              .titleMedium
+                              .override(
+                                fontFamily: 'Lexend',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w300,
+                              ),
                         ),
                       ],
                     ),
@@ -148,11 +137,6 @@ class _ComponenteLoginWidgetState extends State<ComponenteLoginWidget> {
                           child: TextFormField(
                             controller: _model.emailAddressController,
                             focusNode: _model.emailAddressFocusNode,
-                            onChanged: (_) => EasyDebounce.debounce(
-                              '_model.emailAddressController',
-                              Duration(milliseconds: 2000),
-                              () => setState(() {}),
-                            ),
                             autofocus: true,
                             textCapitalization: TextCapitalization.none,
                             obscureText: false,
@@ -196,24 +180,9 @@ class _ComponenteLoginWidgetState extends State<ComponenteLoginWidget> {
                               ),
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
+                                  .primaryBackground,
                               contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 24.0, 20.0, 24.0),
-                              suffixIcon: _model
-                                      .emailAddressController!.text.isNotEmpty
-                                  ? InkWell(
-                                      onTap: () async {
-                                        _model.emailAddressController?.clear();
-                                        setState(() {});
-                                      },
-                                      child: Icon(
-                                        Icons.clear,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        size: 22.0,
-                                      ),
-                                    )
-                                  : null,
                             ),
                             style: FlutterFlowTheme.of(context).bodyMedium,
                             maxLength: 128,
@@ -237,12 +206,12 @@ class _ComponenteLoginWidgetState extends State<ComponenteLoginWidget> {
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: FFLocalizations.of(context).getText(
-                                'rxhxitqt' /* Nombres */,
+                                'rxhxitqt' /* Nombre y apellido */,
                               ),
                               labelStyle:
                                   FlutterFlowTheme.of(context).bodySmall,
                               hintText: FFLocalizations.of(context).getText(
-                                'layn4cui' /* Ingresar nombres */,
+                                'layn4cui' /* Ingresar nombre y apellido */,
                               ),
                               hintStyle: FlutterFlowTheme.of(context).bodySmall,
                               enabledBorder: OutlineInputBorder(
@@ -275,7 +244,7 @@ class _ComponenteLoginWidgetState extends State<ComponenteLoginWidget> {
                               ),
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
+                                  .primaryBackground,
                               contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 24.0, 20.0, 24.0),
                             ),
@@ -288,131 +257,6 @@ class _ComponenteLoginWidgetState extends State<ComponenteLoginWidget> {
                                 null,
                             validator: _model.primerNombreControllerValidator
                                 .asValidator(context),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 12.0, 0.0, 0.0),
-                          child: TextFormField(
-                            controller: _model.segundoNombreController,
-                            focusNode: _model.segundoNombreFocusNode,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelText: FFLocalizations.of(context).getText(
-                                'kszu8ttq' /* Apellidos */,
-                              ),
-                              labelStyle:
-                                  FlutterFlowTheme.of(context).bodySmall,
-                              hintText: FFLocalizations.of(context).getText(
-                                '20gocco9' /* Ingresar apellidos */,
-                              ),
-                              hintStyle: FlutterFlowTheme.of(context).bodySmall,
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              filled: true,
-                              fillColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 24.0, 20.0, 24.0),
-                            ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                            maxLength: 100,
-                            buildCounter: (context,
-                                    {required currentLength,
-                                    required isFocused,
-                                    maxLength}) =>
-                                null,
-                            validator: _model.segundoNombreControllerValidator
-                                .asValidator(context),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 12.0, 0.0, 0.0),
-                          child: TextFormField(
-                            controller: _model.documentIdController,
-                            focusNode: _model.documentIdFocusNode,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelText: FFLocalizations.of(context).getText(
-                                'm616i0s4' /* RUT */,
-                              ),
-                              labelStyle:
-                                  FlutterFlowTheme.of(context).bodySmall,
-                              hintText: FFLocalizations.of(context).getText(
-                                't4stvknv' /* Ingresa tu RUT */,
-                              ),
-                              hintStyle: FlutterFlowTheme.of(context).bodySmall,
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              filled: true,
-                              fillColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 24.0, 20.0, 24.0),
-                            ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                            maxLength: 12,
-                            buildCounter: (context,
-                                    {required currentLength,
-                                    required isFocused,
-                                    maxLength}) =>
-                                null,
-                            validator: _model.documentIdControllerValidator
-                                .asValidator(context),
-                            inputFormatters: [_model.documentIdMask],
                           ),
                         ),
                         Padding(
@@ -462,7 +306,7 @@ class _ComponenteLoginWidgetState extends State<ComponenteLoginWidget> {
                               ),
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
+                                  .primaryBackground,
                               contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 24.0, 20.0, 24.0),
                               suffixIcon: InkWell(
@@ -540,7 +384,7 @@ class _ComponenteLoginWidgetState extends State<ComponenteLoginWidget> {
                               ),
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
+                                  .primaryBackground,
                               contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 24.0, 20.0, 24.0),
                               suffixIcon: InkWell(
@@ -574,41 +418,116 @@ class _ComponenteLoginWidgetState extends State<ComponenteLoginWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
-                          child: Theme(
-                            data: ThemeData(
-                              checkboxTheme: CheckboxThemeData(
-                                visualDensity: VisualDensity.compact,
-                                materialTapTargetSize:
-                                    MaterialTapTargetSize.shrinkWrap,
+                          child: TextFormField(
+                            controller: _model.telefonoController,
+                            focusNode: _model.telefonoFocusNode,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: FFLocalizations.of(context).getText(
+                                'kszu8ttq' /* Número de teléfono */,
                               ),
-                              unselectedWidgetColor:
-                                  FlutterFlowTheme.of(context).secondaryText,
-                            ),
-                            child: CheckboxListTile(
-                              value: _model.checkboxListTileValue ??= false,
-                              onChanged: (newValue) async {
-                                setState(() =>
-                                    _model.checkboxListTileValue = newValue!);
-                              },
-                              subtitle: Text(
-                                FFLocalizations.of(context).getText(
-                                  'advjq46u' /* He leído y acepto los términos... */,
+                              labelStyle:
+                                  FlutterFlowTheme.of(context).bodySmall,
+                              hintText: FFLocalizations.of(context).getText(
+                                '20gocco9' /* Número de teléfono */,
+                              ),
+                              hintStyle: FlutterFlowTheme.of(context).bodySmall,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  width: 1.0,
                                 ),
-                                textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                    ),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
-                              tileColor: FlutterFlowTheme.of(context).secondary,
-                              activeColor: FlutterFlowTheme.of(context).primary,
-                              checkColor: FlutterFlowTheme.of(context).info,
-                              dense: false,
-                              controlAffinity: ListTileControlAffinity.leading,
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).error,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).error,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              filled: true,
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 24.0, 20.0, 24.0),
                             ),
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            maxLength: 9,
+                            buildCounter: (context,
+                                    {required currentLength,
+                                    required isFocused,
+                                    maxLength}) =>
+                                null,
+                            keyboardType: TextInputType.phone,
+                            validator: _model.telefonoControllerValidator
+                                .asValidator(context),
+                            inputFormatters: [
+                              FilteringTextInputFormatter.allow(RegExp('[0-9]'))
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 12.0, 0.0, 0.0),
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: 75.0,
+                            child: custom_widgets.ChileanRutInput(
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              height: 75.0,
+                              defaultValue: '',
+                            ),
+                          ),
+                        ),
+                        Theme(
+                          data: ThemeData(
+                            checkboxTheme: CheckboxThemeData(
+                              visualDensity: VisualDensity.compact,
+                              materialTapTargetSize:
+                                  MaterialTapTargetSize.shrinkWrap,
+                            ),
+                            unselectedWidgetColor:
+                                FlutterFlowTheme.of(context).secondaryText,
+                          ),
+                          child: CheckboxListTile(
+                            value: _model.checkboxTyCValue ??= false,
+                            onChanged: (newValue) async {
+                              setState(
+                                  () => _model.checkboxTyCValue = newValue!);
+                            },
+                            subtitle: Text(
+                              FFLocalizations.of(context).getText(
+                                'advjq46u' /* He leído y acepto los términos... */,
+                              ),
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                  ),
+                            ),
+                            activeColor: FlutterFlowTheme.of(context).textColor,
+                            checkColor:
+                                FlutterFlowTheme.of(context).primaryText,
+                            dense: false,
+                            controlAffinity: ListTileControlAffinity.leading,
                           ),
                         ),
                       ],
@@ -623,38 +542,106 @@ class _ComponenteLoginWidgetState extends State<ComponenteLoginWidget> {
                             !_model.formKey.currentState!.validate()) {
                           return;
                         }
-                        GoRouter.of(context).prepareAuthEvent();
-                        if (_model.passwordCreateController.text !=
-                            _model.passwordConfirmController.text) {
+                        _model.valPhone = await queryUsersRecordCount(
+                          queryBuilder: (usersRecord) => usersRecord.where(
+                            'phone_number',
+                            isEqualTo: _model.telefonoController.text,
+                          ),
+                        );
+                        if (_model.valPhone == 0) {
+                          _model.valEmail = await queryUsersRecordCount(
+                            queryBuilder: (usersRecord) => usersRecord.where(
+                              'document_id',
+                              isEqualTo: FFAppState().rutForm,
+                            ),
+                          );
+                          if (_model.valEmail == 0) {
+                            if (_model.checkboxTyCValue!) {
+                              GoRouter.of(context).prepareAuthEvent();
+                              if (_model.passwordCreateController.text !=
+                                  _model.passwordConfirmController.text) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Passwords don\'t match!',
+                                    ),
+                                  ),
+                                );
+                                return;
+                              }
+
+                              final user =
+                                  await authManager.createAccountWithEmail(
+                                context,
+                                _model.emailAddressController.text,
+                                _model.passwordCreateController.text,
+                              );
+                              if (user == null) {
+                                return;
+                              }
+
+                              await UsersRecord.collection
+                                  .doc(user.uid)
+                                  .update(createUsersRecordData(
+                                    email: _model.emailAddressController.text,
+                                    documentId: FFAppState().rutForm,
+                                    phoneNumber: _model.telefonoController.text,
+                                    displayName:
+                                        _model.primerNombreController.text,
+                                  ));
+
+                              context.goNamedAuth(
+                                  'paginaTutorial', context.mounted);
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Debe aceptar los terminos y condiciones',
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).alternate,
+                                ),
+                              );
+                            }
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'El RUT ya se encuentra registrado.',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).alternate,
+                              ),
+                            );
+                          }
+                        } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                'Passwords don\'t match!',
+                                'El teléfono ya se encuentra registrado. ${_model.valPhone?.toString()}',
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
                               ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).alternate,
                             ),
                           );
-                          return;
                         }
 
-                        final user = await authManager.createAccountWithEmail(
-                          context,
-                          _model.emailAddressController.text,
-                          _model.passwordCreateController.text,
-                        );
-                        if (user == null) {
-                          return;
-                        }
-
-                        await UsersRecord.collection
-                            .doc(user.uid)
-                            .update(createUsersRecordData(
-                              firstName: _model.primerNombreController.text,
-                              lastName: _model.segundoNombreController.text,
-                              email: _model.emailAddressController.text,
-                              documentId: _model.documentIdController.text,
-                            ));
-
-                        context.goNamedAuth('paginaTutorial', context.mounted);
+                        setState(() {});
                       },
                       text: FFLocalizations.of(context).getText(
                         'fvdravf7' /* Crear Cuenta */,

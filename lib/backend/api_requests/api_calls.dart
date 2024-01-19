@@ -1,138 +1,302 @@
 import 'dart:convert';
 import 'dart:typed_data';
+import '../cloud_functions/cloud_functions.dart';
+import '../schema/structs/index.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
 
-const _kPrivateApiFunctionName = 'ffPrivateApiCall';
+const _kPrivateApiFunctionName = 'PrivateApiCallV2';
 
 /// Start ONE CLICK Group Code
 
 class OneClickGroup {
-  static String baseUrl =
-      'https://api-dot-zippy-dev-payments.rj.r.appspot.com/';
-  static Map<String, String> headers = {};
-  static CreateClientSuscriptionCall createClientSuscriptionCall =
-      CreateClientSuscriptionCall();
+  static CreateClientSubscCall createClientSubscCall = CreateClientSubscCall();
   static ClientCardsCall clientCardsCall = ClientCardsCall();
   static CreateTransactionCall createTransactionCall = CreateTransactionCall();
+  static GetBanksCall getBanksCall = GetBanksCall();
 }
 
-class CreateClientSuscriptionCall {
+class CreateClientSubscCall {
   Future<ApiCallResponse> call({
+    String? planName = 'PLAN ZIPP 0001',
+    String? merchantId = '2024Zipp2A8f',
+    String? city = '-',
+    String? postalCode = '8320000',
+    String? country = '-',
+    String? region = '-',
+    String? address = '-',
+    String? userId = '',
+    String? commerceReqId = '',
+    dynamic? metadataJson,
+    String? description = '',
+    String? amount = '0',
     String? email = '',
     String? name = '',
     String? rut = '',
-    String? phone = '',
-    String? address = '',
-    String? country = '',
-    String? region = '',
-    String? city = '',
-    String? postalCode = '',
-    String? merchantId = '2022Gate-Express1e7w',
-    String? userId = '',
-    String? planName = 'PLAN GATE 0001',
+    String? phone = '-',
+    String? cardId = '',
   }) async {
-    final ffApiRequestBody = '''
-{
-  "email": "${email}",
-  "name": "${name}",
-  "rut": "${rut}",
-  "phone": "${phone}",
-  "address": "${address}",
-  "country": "${country}",
-  "region": "${region}",
-  "city": "${city}",
-  "postal_code": "${postalCode}",
-  "merchantId": "${merchantId}",
-  "userId": "${userId}",
-  "planName": "${planName}"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'CREATE CLIENT  SUSCRIPTION',
-      apiUrl: '${OneClickGroup.baseUrl}recordOneClick',
-      callType: ApiCallType.POST,
-      headers: {
-        'content-type': 'application/json',
+    final metadata = _serializeJson(metadataJson);
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'CreateClientSubscCall',
+        'variables': {
+          'planName': planName,
+          'merchantId': merchantId,
+          'city': city,
+          'postalCode': postalCode,
+          'country': country,
+          'region': region,
+          'address': address,
+          'userId': userId,
+          'commerceReqId': commerceReqId,
+          'metadata': metadata,
+          'description': description,
+          'amount': amount,
+          'email': email,
+          'name': name,
+          'rut': rut,
+          'phone': phone,
+          'cardId': cardId,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 }
 
 class ClientCardsCall {
   Future<ApiCallResponse> call({
-    String? merchantId = '2022Gate-Express1e7w',
+    String? planName = 'PLAN ZIPP 0001',
+    String? merchantId = '2024Zipp2A8f',
+    String? city = '-',
+    String? postalCode = '8320000',
+    String? country = '-',
+    String? region = '-',
+    String? address = '-',
+    String? userId = '',
+    String? commerceReqId = '',
+    dynamic? metadataJson,
+    String? description = '',
+    String? amount = '0',
+    String? email = '',
+    String? name = '',
+    String? rut = '',
+    String? phone = '-',
+    String? cardId = '',
   }) async {
-    final ffApiRequestBody = '''
-{
-  "userId": "0001",
-  "merchantId": "${merchantId}"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'CLIENT CARDS',
-      apiUrl: '${OneClickGroup.baseUrl}getCardClientOneClick',
-      callType: ApiCallType.POST,
-      headers: {},
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: true,
-      alwaysAllowBody: false,
+    final metadata = _serializeJson(metadataJson);
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'ClientCardsCall',
+        'variables': {
+          'planName': planName,
+          'merchantId': merchantId,
+          'city': city,
+          'postalCode': postalCode,
+          'country': country,
+          'region': region,
+          'address': address,
+          'userId': userId,
+          'commerceReqId': commerceReqId,
+          'metadata': metadata,
+          'description': description,
+          'amount': amount,
+          'email': email,
+          'name': name,
+          'rut': rut,
+          'phone': phone,
+          'cardId': cardId,
+        },
+      },
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 }
 
 class CreateTransactionCall {
   Future<ApiCallResponse> call({
-    String? merchantId = '2022Gate-Express1e7w',
+    String? planName = 'PLAN ZIPP 0001',
+    String? merchantId = '2024Zipp2A8f',
+    String? city = '-',
+    String? postalCode = '8320000',
+    String? country = '-',
+    String? region = '-',
+    String? address = '-',
+    String? userId = '',
+    String? commerceReqId = '',
+    dynamic? metadataJson,
+    String? description = '',
+    String? amount = '0',
+    String? email = '',
+    String? name = '',
+    String? rut = '',
+    String? phone = '-',
+    String? cardId = '',
+  }) async {
+    final metadata = _serializeJson(metadataJson);
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'CreateTransactionCall',
+        'variables': {
+          'planName': planName,
+          'merchantId': merchantId,
+          'city': city,
+          'postalCode': postalCode,
+          'country': country,
+          'region': region,
+          'address': address,
+          'userId': userId,
+          'commerceReqId': commerceReqId,
+          'metadata': metadata,
+          'description': description,
+          'amount': amount,
+          'email': email,
+          'name': name,
+          'rut': rut,
+          'phone': phone,
+          'cardId': cardId,
+        },
+      },
+    );
+    return ApiCallResponse.fromCloudCallResponse(response);
+  }
+}
+
+class GetBanksCall {
+  Future<ApiCallResponse> call({
+    String? planName = 'PLAN ZIPP 0001',
+    String? merchantId = '2024Zipp2A8f',
+    String? city = '-',
+    String? postalCode = '8320000',
+    String? country = '-',
+    String? region = '-',
+    String? address = '-',
+    String? userId = '',
+    String? commerceReqId = '',
+    dynamic? metadataJson,
+    String? description = '',
+    String? amount = '0',
+    String? email = '',
+    String? name = '',
+    String? rut = '',
+    String? phone = '-',
+    String? cardId = '',
+  }) async {
+    final metadata = _serializeJson(metadataJson);
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetBanksCall',
+        'variables': {
+          'planName': planName,
+          'merchantId': merchantId,
+          'city': city,
+          'postalCode': postalCode,
+          'country': country,
+          'region': region,
+          'address': address,
+          'userId': userId,
+          'commerceReqId': commerceReqId,
+          'metadata': metadata,
+          'description': description,
+          'amount': amount,
+          'email': email,
+          'name': name,
+          'rut': rut,
+          'phone': phone,
+          'cardId': cardId,
+        },
+      },
+    );
+    return ApiCallResponse.fromCloudCallResponse(response);
+  }
+}
+
+/// End ONE CLICK Group Code
+
+/// Start ZIPP Group Code
+
+class ZippGroup {
+  static String baseUrl =
+      'https://us-central1-test-zippypay.cloudfunctions.net';
+  static Map<String, String> headers = {
+    'Authorization': '[auth_token]',
+  };
+  static RegisterPayCall registerPayCall = RegisterPayCall();
+  static ValidateFormsCall validateFormsCall = ValidateFormsCall();
+}
+
+class RegisterPayCall {
+  Future<ApiCallResponse> call({
+    String? userAccountId = '',
+    String? cardId = 'sure8b477347471a80c55098',
+    int? amount = 30000,
+    String? description = 'Test',
+    String? authToken = '',
+  }) async {
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'RegisterPayCall',
+        'variables': {
+          'userAccountId': userAccountId,
+          'cardId': cardId,
+          'amount': amount,
+          'description': description,
+          'authToken': authToken,
+        },
+      },
+    );
+    return ApiCallResponse.fromCloudCallResponse(response);
+  }
+
+  dynamic? ok(dynamic response) => getJsonField(
+        response,
+        r'''$''',
+      );
+}
+
+class ValidateFormsCall {
+  Future<ApiCallResponse> call({
+    String? documentId = '',
+    String? email = '',
+    String? cardId = 'sure8b477347471a80c55098',
+    int? amount = 30000,
+    String? description = 'Test',
+    String? authToken = '',
   }) async {
     final ffApiRequestBody = '''
 {
-  "commerceReqId": "10323r",
-  "userId": "0001",
-  "cardId": "sure6e1b1f7150595ed256a8",
-  "email": "fmansilla@stratechcorp.com",
-  "phone": "923232323",
-  "merchantId": "${merchantId}",
-  "rut": "184282100",
-  "amount": "1000",
-  "description": "Subscription payment",
-  "metadata": {}
+  "document_id": "${documentId}",
+  "email": "${email}"
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'CREATE TRANSACTION',
-      apiUrl: '${OneClickGroup.baseUrl}createTransactionOneClick',
+      callName: 'VALIDATE FORMS',
+      apiUrl: '${ZippGroup.baseUrl}/function-5',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization':
-            'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMzIiLCJhbW91bnQiOiIxMDAwIiwiaWF0IjoxNjk5NDc0OTgwfQ.oQ9uOz-Vr_zZkivsNDg6ZgZRIvhnqFHkyUCCKQyY5sr_gU03PWX_vs1SFF7Jb3v4s_AU7pHaPGTUxKEf1rR7Ls7q0XKhBhWc5h0jVlgP9B7wNMJoX_oTFuBNvU7ftnY_GS686O67lbpcKsfcymT-oxoM8A7UWPq5m2MuzJgWem3hg-hiS4Vbamj9Fxw72OaKmujlTuRshO2jMzxYzTHLezHMDbiYPdLpBf1ZX_TwEQdbmaFHcqwquXTWhRaY8BYq1aKz2l2C59OpadzAaa3pTBPNpfWDAwWidTIKe8jJOvEsV3dPkatEb3zx09mMZDbHq0f4Gt6Mucr1WSmEkQ1rTQ',
+        'Authorization': '${authToken}',
       },
       params: {},
       body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
-      decodeUtf8: false,
+      decodeUtf8: true,
       cache: false,
       alwaysAllowBody: false,
     );
   }
 }
 
-/// End ONE CLICK Group Code
+/// End ZIPP Group Code
 
 class ApiPagingParams {
   int nextPageNumber = 0;

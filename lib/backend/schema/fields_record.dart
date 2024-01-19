@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
+import '/backend/schema/enums/enums.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -71,6 +72,11 @@ class FieldsRecord extends FirestoreRecord {
   List<DocumentReference> get multipleField => _multipleField ?? const [];
   bool hasMultipleField() => _multipleField != null;
 
+  // "input_type" field.
+  Input? _inputType;
+  Input? get inputType => _inputType;
+  bool hasInputType() => _inputType != null;
+
   void _initializeFields() {
     _dafaultValue = snapshotData['dafault_value'] as String?;
     _label = snapshotData['label'] as String?;
@@ -83,6 +89,7 @@ class FieldsRecord extends FirestoreRecord {
     _required = snapshotData['required'] as bool?;
     _multipleTitle = snapshotData['multiple_title'] as String?;
     _multipleField = getDataList(snapshotData['multiple_field']);
+    _inputType = deserializeEnum<Input>(snapshotData['input_type']);
   }
 
   static CollectionReference get collection =>
@@ -129,6 +136,7 @@ Map<String, dynamic> createFieldsRecordData({
   String? type,
   bool? required,
   String? multipleTitle,
+  Input? inputType,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -142,6 +150,7 @@ Map<String, dynamic> createFieldsRecordData({
       'type': type,
       'required': required,
       'multiple_title': multipleTitle,
+      'input_type': inputType,
     }.withoutNulls,
   );
 
@@ -164,7 +173,8 @@ class FieldsRecordDocumentEquality implements Equality<FieldsRecord> {
         e1?.type == e2?.type &&
         e1?.required == e2?.required &&
         e1?.multipleTitle == e2?.multipleTitle &&
-        listEquality.equals(e1?.multipleField, e2?.multipleField);
+        listEquality.equals(e1?.multipleField, e2?.multipleField) &&
+        e1?.inputType == e2?.inputType;
   }
 
   @override
@@ -179,7 +189,8 @@ class FieldsRecordDocumentEquality implements Equality<FieldsRecord> {
         e?.type,
         e?.required,
         e?.multipleTitle,
-        e?.multipleField
+        e?.multipleField,
+        e?.inputType
       ]);
 
   @override

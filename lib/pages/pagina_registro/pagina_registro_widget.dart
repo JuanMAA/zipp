@@ -52,7 +52,7 @@ class _PaginaRegistroWidgetState extends State<PaginaRegistroWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       body: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -65,7 +65,7 @@ class _PaginaRegistroWidgetState extends State<PaginaRegistroWidget> {
               maxWidth: 500.0,
             ),
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primaryBackground,
+              color: FlutterFlowTheme.of(context).secondaryBackground,
             ),
             child: wrapWithModel(
               model: _model.componenteLoginModel,

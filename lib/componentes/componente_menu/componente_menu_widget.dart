@@ -126,10 +126,8 @@ class _ComponenteMenuWidgetState extends State<ComponenteMenuWidget> {
                                           extra: <String, dynamic>{
                                             kTransitionInfoKey: TransitionInfo(
                                               hasTransition: true,
-                                              transitionType:
-                                                  PageTransitionType.fade,
-                                              duration:
-                                                  Duration(milliseconds: 0),
+                                              transitionType: PageTransitionType
+                                                  .rightToLeft,
                                             ),
                                           },
                                         );
@@ -138,14 +136,11 @@ class _ComponenteMenuWidgetState extends State<ComponenteMenuWidget> {
                                         width: double.infinity,
                                         height: 60.0,
                                         decoration: BoxDecoration(
-                                          color: functions.getCurrentPage(
-                                                  valueOrDefault<String>(
-                                                    widget.currentPage,
-                                                    'ajustes',
-                                                  ),
-                                                  'historial')!
+                                          color: functions.getActive(
+                                                  'zippypay://zipp.com${GoRouter.of(context).location}',
+                                                  'home')!
                                               ? FlutterFlowTheme.of(context)
-                                                  .secondaryBackground
+                                                  .primary
                                               : FlutterFlowTheme.of(context)
                                                   .primaryBackground,
                                           boxShadow: [
@@ -176,15 +171,24 @@ class _ComponenteMenuWidgetState extends State<ComponenteMenuWidget> {
                                                         .getText(
                                                       'onkb20hq' /* Inicio */,
                                                     ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                        ),
+                                                    style:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyLarge
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              color: functions
+                                                                      .getActive(
+                                                                          'zippypay://zipp.com${GoRouter.of(context).location}',
+                                                                          'home')!
+                                                                  ? FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondary
+                                                                  : FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                            ),
                                                   ),
                                                   Expanded(
                                                     child: Align(
@@ -224,10 +228,8 @@ class _ComponenteMenuWidgetState extends State<ComponenteMenuWidget> {
                                           extra: <String, dynamic>{
                                             kTransitionInfoKey: TransitionInfo(
                                               hasTransition: true,
-                                              transitionType:
-                                                  PageTransitionType.fade,
-                                              duration:
-                                                  Duration(milliseconds: 0),
+                                              transitionType: PageTransitionType
+                                                  .rightToLeft,
                                             ),
                                           },
                                         );
@@ -236,14 +238,11 @@ class _ComponenteMenuWidgetState extends State<ComponenteMenuWidget> {
                                         width: double.infinity,
                                         height: 60.0,
                                         decoration: BoxDecoration(
-                                          color: functions.getCurrentPage(
-                                                  valueOrDefault<String>(
-                                                    widget.currentPage,
-                                                    'ajustes',
-                                                  ),
+                                          color: functions.getActive(
+                                                  'zippypay://zipp.com${GoRouter.of(context).location}',
                                                   'historial')!
                                               ? FlutterFlowTheme.of(context)
-                                                  .secondaryBackground
+                                                  .primary
                                               : FlutterFlowTheme.of(context)
                                                   .primaryBackground,
                                           boxShadow: [
@@ -274,15 +273,23 @@ class _ComponenteMenuWidgetState extends State<ComponenteMenuWidget> {
                                                         .getText(
                                                       'h7e4aopk' /* Historial */,
                                                     ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                        ),
+                                                    style:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyLarge
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              color: functions.getActive(
+                                                                      'zippypay://zipp.com${GoRouter.of(context).location}',
+                                                                      'historial')!
+                                                                  ? FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondary
+                                                                  : FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                            ),
                                                   ),
                                                   Expanded(
                                                     child: Align(
@@ -318,14 +325,12 @@ class _ComponenteMenuWidgetState extends State<ComponenteMenuWidget> {
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
                                         context.pushNamed(
-                                          'paginaTargetas',
+                                          'paginaTarjetas',
                                           extra: <String, dynamic>{
                                             kTransitionInfoKey: TransitionInfo(
                                               hasTransition: true,
-                                              transitionType:
-                                                  PageTransitionType.fade,
-                                              duration:
-                                                  Duration(milliseconds: 0),
+                                              transitionType: PageTransitionType
+                                                  .rightToLeft,
                                             ),
                                           },
                                         );
@@ -334,14 +339,11 @@ class _ComponenteMenuWidgetState extends State<ComponenteMenuWidget> {
                                         width: double.infinity,
                                         height: 60.0,
                                         decoration: BoxDecoration(
-                                          color: functions.getCurrentPage(
-                                                  valueOrDefault<String>(
-                                                    widget.currentPage,
-                                                    'ajustes',
-                                                  ),
-                                                  'historial')!
+                                          color: functions.getActive(
+                                                  'zippypay://zipp.com${GoRouter.of(context).location}',
+                                                  'tarjetas')!
                                               ? FlutterFlowTheme.of(context)
-                                                  .secondaryBackground
+                                                  .primary
                                               : FlutterFlowTheme.of(context)
                                                   .primaryBackground,
                                           boxShadow: [
@@ -372,15 +374,23 @@ class _ComponenteMenuWidgetState extends State<ComponenteMenuWidget> {
                                                         .getText(
                                                       '3vw3b6nk' /* Metodo de Pago */,
                                                     ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                        ),
+                                                    style:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyLarge
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              color: functions.getActive(
+                                                                      'zippypay://zipp.com${GoRouter.of(context).location}',
+                                                                      'tarjetas')!
+                                                                  ? FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondary
+                                                                  : FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                            ),
                                                   ),
                                                   Expanded(
                                                     child: Align(
@@ -420,10 +430,8 @@ class _ComponenteMenuWidgetState extends State<ComponenteMenuWidget> {
                                           extra: <String, dynamic>{
                                             kTransitionInfoKey: TransitionInfo(
                                               hasTransition: true,
-                                              transitionType:
-                                                  PageTransitionType.fade,
-                                              duration:
-                                                  Duration(milliseconds: 0),
+                                              transitionType: PageTransitionType
+                                                  .rightToLeft,
                                             ),
                                           },
                                         );
@@ -432,9 +440,9 @@ class _ComponenteMenuWidgetState extends State<ComponenteMenuWidget> {
                                         width: double.infinity,
                                         height: 60.0,
                                         decoration: BoxDecoration(
-                                          color: functions.getCurrentPage(
-                                                  widget.currentPage,
-                                                  'agregar')!
+                                          color: functions.getActive(
+                                                  'zippypay://zipp.com${GoRouter.of(context).location}',
+                                                  'categoria')!
                                               ? FlutterFlowTheme.of(context)
                                                   .primary
                                               : FlutterFlowTheme.of(context)
@@ -450,9 +458,9 @@ class _ComponenteMenuWidgetState extends State<ComponenteMenuWidget> {
                                           ],
                                           shape: BoxShape.rectangle,
                                           border: Border.all(
-                                            color: functions.getCurrentPage(
-                                                    widget.currentPage,
-                                                    'agregar')!
+                                            color: functions.getActive(
+                                                    'zippypay://zipp.com${GoRouter.of(context).location}',
+                                                    'categoria')!
                                                 ? FlutterFlowTheme.of(context)
                                                     .primary
                                                 : FlutterFlowTheme.of(context)
@@ -483,14 +491,9 @@ class _ComponenteMenuWidgetState extends State<ComponenteMenuWidget> {
                                                             .override(
                                                               fontFamily:
                                                                   'Poppins',
-                                                              color: functions
-                                                                      .getCurrentPage(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            widget.currentPage,
-                                                                            'agregar',
-                                                                          ),
-                                                                          'agregar')!
+                                                              color: functions.getActive(
+                                                                      'zippypay://zipp.com${GoRouter.of(context).location}',
+                                                                      'categoria')!
                                                                   ? FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondary
@@ -559,10 +562,8 @@ class _ComponenteMenuWidgetState extends State<ComponenteMenuWidget> {
                                           extra: <String, dynamic>{
                                             kTransitionInfoKey: TransitionInfo(
                                               hasTransition: true,
-                                              transitionType:
-                                                  PageTransitionType.fade,
-                                              duration:
-                                                  Duration(milliseconds: 0),
+                                              transitionType: PageTransitionType
+                                                  .rightToLeft,
                                             ),
                                           },
                                         );
@@ -571,14 +572,11 @@ class _ComponenteMenuWidgetState extends State<ComponenteMenuWidget> {
                                         width: double.infinity,
                                         height: 60.0,
                                         decoration: BoxDecoration(
-                                          color: functions.getCurrentPage(
-                                                  valueOrDefault<String>(
-                                                    widget.currentPage,
-                                                    'ajustes',
-                                                  ),
-                                                  'historial')!
+                                          color: functions.getActive(
+                                                  'zippypay://zipp.com${GoRouter.of(context).location}',
+                                                  'micuenta')!
                                               ? FlutterFlowTheme.of(context)
-                                                  .secondaryBackground
+                                                  .primary
                                               : FlutterFlowTheme.of(context)
                                                   .primaryBackground,
                                           boxShadow: [
@@ -609,15 +607,23 @@ class _ComponenteMenuWidgetState extends State<ComponenteMenuWidget> {
                                                         .getText(
                                                       'ak8ojqn7' /* Ajustes */,
                                                     ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                        ),
+                                                    style:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyLarge
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              color: functions.getActive(
+                                                                      'zippypay://zipp.com${GoRouter.of(context).location}',
+                                                                      'micuenta')!
+                                                                  ? FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondary
+                                                                  : FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                            ),
                                                   ),
                                                   Expanded(
                                                     child: Align(

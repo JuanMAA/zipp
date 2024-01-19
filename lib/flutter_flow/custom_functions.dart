@@ -10,6 +10,8 @@ import 'place.dart';
 import 'uploaded_file.dart';
 import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '/backend/schema/structs/index.dart';
+import '/backend/schema/enums/enums.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
 bool? getCurrentPage(
@@ -26,7 +28,7 @@ bool? getCurrentPage(
     case 'ajustes':
       return page == 'ajustes' ? true : false;
     case 'targetas':
-      return page == 'targetas' ? true : false;
+      return page == 'tarjetas' ? true : false;
     case 'transacciones':
       return page == 'transacciones' ? true : false;
     case 'historial':
@@ -635,4 +637,53 @@ String? validateRut(String? rut) {
 
   // RUT is valid
   return null;
+}
+
+bool? getActive(
+  String? route,
+  String? param,
+) {
+  if (route!.contains('/home') && param == 'home') {
+    return true;
+  }
+  if (route!.contains('/historial') && param == 'historial') {
+    return true;
+  }
+  if (route!.contains('/tarjetas') && param == 'tarjetas') {
+    return true;
+  }
+  if ((route.contains('/categoria') ||
+          route.contains('/nueva_cuenta') ||
+          route.contains('/destinatario') ||
+          route.contains('/pago') ||
+          route.contains('/cuenta')) &&
+      param == 'categoria') {
+    return true;
+  }
+  if ((route.contains('/micuenta') ||
+          route.contains('/editar_perfil') ||
+          route.contains('/restablecer')) &&
+      param == 'micuenta') {
+    return true;
+  }
+  if (route.contains('/editar_perfil') && param == 'editar_perfil') {
+    return true;
+  }
+  return false;
+}
+
+String? getDefaultValue(
+  int? index,
+  List<InputDataStruct>? arrayForm,
+) {
+  print("arrayForm");
+  print(arrayForm);
+  String defaultValue = "";
+  for (var entry in arrayForm!) {
+    if (index == entry.id && entry.value.isNotEmpty) {
+      defaultValue = entry.value;
+    }
+  }
+
+  return defaultValue;
 }

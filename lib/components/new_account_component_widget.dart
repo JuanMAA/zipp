@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/componentes/componente_mensaje/componente_mensaje_widget.dart';
+import '/components/title_widget_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -88,91 +89,20 @@ class _NewAccountComponentWidgetState extends State<NewAccountComponentWidget>
         Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(24.0, 20.0, 0.0, 0.0),
-              child: InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  context.safePop();
-                },
-                child: Icon(
-                  Icons.arrow_back_outlined,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 40.0,
-                ),
-              ),
-            ),
             Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 10.0, 0.0),
-                    child: StreamBuilder<AccountTypesRecord>(
-                      stream: AccountTypesRecord.getDocument(
-                          widget.accountTypeData!),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 50.0,
-                              height: 50.0,
-                              child: SpinKitRing(
-                                color: FlutterFlowTheme.of(context).primary,
-                                size: 50.0,
-                              ),
-                            ),
-                          );
-                        }
-                        final textAccountTypesRecord = snapshot.data!;
-                        return Text(
-                          'Cuenta: ${textAccountTypesRecord.name}',
-                          textAlign: TextAlign.start,
-                          style: FlutterFlowTheme.of(context)
-                              .bodySmall
-                              .override(
-                                fontFamily: 'Lexend',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: MediaQuery.sizeOf(context).width >
-                                        kBreakpointSmall
-                                    ? 17.0
-                                    : 14.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                        );
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 24.0, 0.0),
-                    child: Text(
-                      FFLocalizations.of(context).getText(
-                        '20fd5baa' /* ¿Listo para saldar cuentas? ¿C... */,
-                      ),
-                      textAlign: TextAlign.start,
-                      style: FlutterFlowTheme.of(context).bodySmall.override(
-                            fontFamily: 'Lexend',
-                            fontSize: MediaQuery.sizeOf(context).width >
-                                    kBreakpointSmall
-                                ? 17.0
-                                : 14.0,
-                          ),
-                    ),
-                  ),
-                ],
+              child: wrapWithModel(
+                model: _model.titleWidgetModel,
+                updateCallback: () => setState(() {}),
+                child: TitleWidgetWidget(
+                  title: 'Cuenta:',
+                  subtitle: '¿Listo para saldar cuentas? ¿Cuál eliges primero?',
+                ),
               ),
             ),
           ],
         ),
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(24.0, 15.0, 24.0, 7.0),
+          padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
           child: StreamBuilder<List<AccountsRecord>>(
             stream: queryAccountsRecord(
               queryBuilder: (accountsRecord) => accountsRecord.where(
@@ -254,7 +184,11 @@ class _NewAccountComponentWidgetState extends State<NewAccountComponentWidget>
                       labelText: FFLocalizations.of(context).getText(
                         '0vflie9s' /* ¿Qué cuenta quieres pagar? */,
                       ),
-                      labelStyle: FlutterFlowTheme.of(context).bodySmall,
+                      labelStyle:
+                          FlutterFlowTheme.of(context).bodySmall.override(
+                                fontFamily: 'Lexend',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                              ),
                       hintText: FFLocalizations.of(context).getText(
                         'pylya0zb' /* Ingresa aquí el tipo de cuenta... */,
                       ),
@@ -288,8 +222,7 @@ class _NewAccountComponentWidgetState extends State<NewAccountComponentWidget>
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       filled: true,
-                      fillColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
+                      fillColor: FlutterFlowTheme.of(context).primaryBackground,
                       contentPadding: EdgeInsetsDirectional.fromSTEB(
                           20.0, 24.0, 20.0, 24.0),
                       suffixIcon: _model.searchController!.text.isNotEmpty
@@ -317,7 +250,7 @@ class _NewAccountComponentWidgetState extends State<NewAccountComponentWidget>
         ),
         Expanded(
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24.0, 5.0, 24.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
             child: StreamBuilder<List<AccountsRecord>>(
               stream: queryAccountsRecord(
                 queryBuilder: (accountsRecord) => accountsRecord.where(
@@ -370,21 +303,28 @@ class _NewAccountComponentWidgetState extends State<NewAccountComponentWidget>
                         highlightColor: Colors.transparent,
                         onTap: () async {
                           context.pushNamed(
-                            'paginaCuenta',
+                            'paginaDetallesCuenta',
                             queryParameters: {
-                              'accountsParam': serializeParam(
+                              'ac': serializeParam(
                                 gridViewAccountsRecord.reference,
                                 ParamType.DocumentReference,
                               ),
                             }.withoutNulls,
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.fade,
+                                duration: Duration(milliseconds: 0),
+                              ),
+                            },
                           );
                         },
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.868,
                           height: 25.0,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
                             borderRadius: BorderRadius.circular(8.0),
                             shape: BoxShape.rectangle,
                             border: Border.all(

@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
+import '/backend/schema/enums/enums.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -31,10 +32,16 @@ class AccountTypesRecord extends FirestoreRecord {
   String get description => _description ?? '';
   bool hasDescription() => _description != null;
 
+  // "hidden" field.
+  bool? _hidden;
+  bool get hidden => _hidden ?? false;
+  bool hasHidden() => _hidden != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _icon = snapshotData['icon'] as String?;
     _description = snapshotData['description'] as String?;
+    _hidden = snapshotData['hidden'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -75,12 +82,14 @@ Map<String, dynamic> createAccountTypesRecordData({
   String? name,
   String? icon,
   String? description,
+  bool? hidden,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'name': name,
       'icon': icon,
       'description': description,
+      'hidden': hidden,
     }.withoutNulls,
   );
 
@@ -95,12 +104,13 @@ class AccountTypesRecordDocumentEquality
   bool equals(AccountTypesRecord? e1, AccountTypesRecord? e2) {
     return e1?.name == e2?.name &&
         e1?.icon == e2?.icon &&
-        e1?.description == e2?.description;
+        e1?.description == e2?.description &&
+        e1?.hidden == e2?.hidden;
   }
 
   @override
   int hash(AccountTypesRecord? e) =>
-      const ListEquality().hash([e?.name, e?.icon, e?.description]);
+      const ListEquality().hash([e?.name, e?.icon, e?.description, e?.hidden]);
 
   @override
   bool isValidKey(Object? o) => o is AccountTypesRecord;

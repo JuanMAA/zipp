@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/componentes/componente_editar_perfil/componente_editar_perfil_widget.dart';
 import '/components/menu_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -5,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,6 +37,14 @@ class _PaginaEditarPerfilWidgetState extends State<PaginaEditarPerfilWidget> {
     super.initState();
     _model = createModel(context, () => PaginaEditarPerfilModel());
 
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.componenteEditarPerfilModel.phoneInputController?.text =
+            currentPhoneNumber;
+      });
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -60,7 +70,7 @@ class _PaginaEditarPerfilWidgetState extends State<PaginaEditarPerfilWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       appBar: responsiveVisibility(
         context: context,
         tablet: false,
@@ -99,36 +109,26 @@ class _PaginaEditarPerfilWidgetState extends State<PaginaEditarPerfilWidget> {
         alignment: AlignmentDirectional(0.0, 0.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (responsiveVisibility(
-              context: context,
-              phone: false,
-            ))
-              Container(
-                width: 250.0,
+            wrapWithModel(
+              model: _model.menuComponentModel,
+              updateCallback: () => setState(() {}),
+              child: MenuComponentWidget(),
+            ),
+            Align(
+              alignment: AlignmentDirectional(0.0, 0.0),
+              child: Container(
+                width: MediaQuery.sizeOf(context).width * 1.0,
                 height: MediaQuery.sizeOf(context).height * 1.0,
+                constraints: BoxConstraints(
+                  maxWidth: 600.0,
+                ),
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
-                child: wrapWithModel(
-                  model: _model.menuComponentModel,
-                  updateCallback: () => setState(() {}),
-                  child: MenuComponentWidget(),
-                ),
-              ),
-            Expanded(
-              child: Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
-                child: Container(
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: MediaQuery.sizeOf(context).height * 1.0,
-                  constraints: BoxConstraints(
-                    maxWidth: 900.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).primaryBackground,
-                  ),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: wrapWithModel(
                     model: _model.componenteEditarPerfilModel,
                     updateCallback: () => setState(() {}),

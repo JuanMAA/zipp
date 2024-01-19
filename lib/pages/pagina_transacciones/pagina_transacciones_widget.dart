@@ -99,55 +99,45 @@ class _PaginaTransaccionesWidgetState extends State<PaginaTransaccionesWidget> {
         alignment: AlignmentDirectional(0.0, 0.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Align(
+              alignment: AlignmentDirectional(-1.0, 0.0),
+              child: wrapWithModel(
+                model: _model.menuComponentModel,
+                updateCallback: () => setState(() {}),
+                child: MenuComponentWidget(),
+              ),
+            ),
             Column(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(
-                  child: Align(
-                    alignment: AlignmentDirectional(-1.0, 0.0),
-                    child: wrapWithModel(
-                      model: _model.menuComponentModel,
-                      updateCallback: () => setState(() {}),
-                      child: MenuComponentWidget(),
+                Align(
+                  alignment: AlignmentDirectional(0.0, 0.0),
+                  child: Container(
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    height: MediaQuery.sizeOf(context).height * 1.0,
+                    constraints: BoxConstraints(
+                      maxWidth: 600.0,
                     ),
-                  ),
-                ),
-              ],
-            ),
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
+                    decoration: BoxDecoration(),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.sizeOf(context).height * 1.0,
-                        constraints: BoxConstraints(
-                          maxWidth: 900.0,
-                        ),
-                        decoration: BoxDecoration(),
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 20.0, 0.0, 0.0),
-                          child: wrapWithModel(
-                            model: _model.componenteTransaccionesModel,
-                            updateCallback: () => setState(() {}),
-                            child: ComponenteTransaccionesWidget(),
-                          ),
+                      alignment: AlignmentDirectional(0.0, -1.0),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        child: wrapWithModel(
+                          model: _model.componenteTransaccionesModel,
+                          updateCallback: () => setState(() {}),
+                          child: ComponenteTransaccionesWidget(),
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
